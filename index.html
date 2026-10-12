@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mohtarf | Lesson 4: Ethical Issues with AI</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Cairo','Segoe UI',Tahoma,Arial,sans-serif;font-size:22px;line-height:1.9;color:#0b2447;background:linear-gradient(120deg,#dff1ff,#efe3ff,#d9fbe6,#fff4cc);background-size:400% 400%;animation:bgm 16s ease infinite;min-height:100vh;overflow-x:hidden}
+@keyframes bgm{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+.fl{position:fixed;bottom:-60px;font-size:34px;opacity:.28;pointer-events:none;z-index:0;animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-115vh) rotate(360deg)}}
+header{position:relative;z-index:2;background:linear-gradient(90deg,#0b3d91,#1565c0,#6a1b9a);color:#fff;padding:14px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+header h1{margin:0;font-size:26px;line-height:1.4;flex:1;min-width:240px}
+header small{display:block;font-size:17px;opacity:.9;font-weight:400}
+.logo{display:flex;align-items:center;gap:10px;background:#fff;border-radius:18px;padding:6px 16px;color:#0b3d91;font-weight:900;font-size:24px;direction:ltr}
+.logo small{font-size:13px;color:#6a1b9a;letter-spacing:2px;display:block;margin:0;line-height:1}
+main{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:18px 16px 70px}
+.hero{text-align:center;padding:12px 8px}
+.hero h2{font-size:34px;margin:6px 0;color:#0b3d91;line-height:1.5}
+.hero p{font-size:22px;margin:4px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin-top:18px}
+.tile{border:0;border-radius:26px;padding:22px 16px;font:inherit;font-size:25px;font-weight:800;color:#fff;cursor:pointer;box-shadow:0 8px 0 rgba(0,0,0,.2);transition:.15s;line-height:1.5}
+.tile:hover{transform:translateY(-4px)}
+.tile:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.2)}
+.tile small{display:block;font-size:17px;font-weight:600;opacity:.95}
+.t1{background:linear-gradient(135deg,#1e88e5,#0d47a1)}.t2{background:linear-gradient(135deg,#43a047,#1b5e20)}
+.t3{background:linear-gradient(135deg,#fb8c00,#e65100)}.t4{background:linear-gradient(135deg,#8e24aa,#4a148c)}
+.t5{background:linear-gradient(135deg,#e53935,#b71c1c)}.t6{background:linear-gradient(135deg,#00acc1,#006064)}
+.back{border:0;background:#0b3d91;color:#fff;font:inherit;font-size:20px;padding:8px 22px;border-radius:30px;cursor:pointer;margin:6px 0}
+.card{background:#fff;border-radius:26px;padding:0 0 22px;margin:22px 0;box-shadow:0 8px 24px rgba(11,36,71,.18);overflow:hidden}
+.card>*:not(.ph){margin-left:24px;margin-right:24px}
+.ph{padding:14px 24px;font-size:28px;font-weight:900;color:#fff;margin-bottom:14px}
+.c0{background:linear-gradient(90deg,#1565c0,#42a5f5)}.c1{background:linear-gradient(90deg,#c62828,#ef5350)}
+.c2{background:linear-gradient(90deg,#2e7d32,#66bb6a)}.c3{background:linear-gradient(90deg,#6a1b9a,#ab47bc)}
+.c4{background:linear-gradient(90deg,#ef6c00,#ffa726)}
+.card h3{font-size:25px;margin:10px 24px 4px;color:#0b3d91}
+.card p{margin:8px 24px}
+.card ul{margin:6px 24px;padding-inline-start:32px}
+.box{border-radius:20px;padding:12px 20px;margin-top:14px;margin-bottom:14px;border:3px solid}
+.box.obj{background:#fff0f0;border-color:#ef5350}.box.key{background:#e8f5e9;border-color:#43a047}
+.box.think{background:#fff9db;border-color:#f9a825}.box.term{background:#fce4ec;border-color:#d81b60}
+.box.ex{background:#e3f2fd;border-color:#1e88e5}.box.warn{background:#fff3e0;border-color:#fb8c00}
+.box.sol{background:#f3e5f5;border-color:#8e24aa}
+.box h3{margin:2px 0 4px!important}
+.box p,.box ul{margin-left:0!important;margin-right:0!important}
+.term{color:#c62828;font-weight:900}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0}
+.chips span{background:#e3f2fd;color:#0d47a1;border-radius:30px;padding:2px 18px;font-weight:700;font-size:20px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 24px}
+.pr{border-radius:20px;padding:14px;text-align:center;color:#fff;font-weight:800;font-size:21px;line-height:1.5}
+.pr b{display:block;font-size:44px}
+.pr small{display:block;font-size:17px;font-weight:600}
+.p1{background:#1e88e5}.p2{background:#8e24aa}.p3{background:#43a047}.p4{background:#fb8c00}
+table{border-collapse:collapse;width:calc(100% - 48px);margin:10px 24px;font-size:21px}
+th,td{border:2px solid #90a4ae;padding:8px 12px}
+th{background:#e3eaf6}
+.qbtns{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;margin-bottom:0;justify-content:center}
+.bigbtn{border:0;border-radius:40px;font:inherit;font-size:23px;font-weight:800;color:#fff;padding:12px 30px;cursor:pointer;box-shadow:0 6px 0 rgba(0,0,0,.22)}
+.bigbtn.g{background:#2e7d32}.bigbtn.b{background:#1565c0}.bigbtn.o{background:#ef6c00}
+.bigbtn:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.22)}
+#modal{position:fixed;inset:0;background:rgba(8,20,48,.78);z-index:50;overflow-y:auto;padding:14px}
+.hidden{display:none}
+.mbox{max-width:900px;margin:0 auto;background:#fff;border-radius:28px;padding:20px 24px 28px;position:relative;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.x{position:absolute;top:10px;inset-inline-end:14px;border:0;background:#ffebee;color:#c62828;font-size:26px;border-radius:50%;width:48px;height:48px;cursor:pointer}
+.mt{font-size:24px;font-weight:900;color:#0b3d91;margin:0 56px 6px 0;line-height:1.5}
+.pbar{height:16px;background:#e0e7f3;border-radius:10px;overflow:hidden;margin:8px 0}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,#43a047,#fdd835);transition:.4s}
+.meta{display:flex;justify-content:space-between;font-size:20px;font-weight:700}
+.qq{font-size:26px;font-weight:800;line-height:1.8;margin:14px 0;background:#f4f8ff;border-radius:18px;padding:12px 18px}
+.opt{display:block;width:100%;text-align:start;font:inherit;font-size:24px;font-weight:700;margin:10px 0;padding:12px 18px;border-radius:18px;border:3px solid #90caf9;background:#fff;cursor:pointer;transition:.12s;color:#0b2447}
+.opt:hover:not([disabled]){background:#e3f2fd;transform:scale(1.015)}
+.opt b{display:inline-block;min-width:44px;height:44px;line-height:44px;border-radius:50%;background:#1565c0;color:#fff;text-align:center;margin-inline-end:12px}
+.opt.sel{border-color:#6a1b9a;background:#f3e5f5}
+.opt.right{background:#c8f7d0;border-color:#2e7d32}.opt.bad{background:#ffd0d0;border-color:#c62828}
+.txt{width:100%;font:inherit;font-size:25px;padding:12px 16px;border:3px solid #90caf9;border-radius:16px}
+.fb{font-size:25px;font-weight:900;border-radius:18px;padding:10px 18px;margin:12px 0;display:none}
+.fb.ok{display:block;background:#c8f7d0;color:#1b5e20}.fb.no{display:block;background:#ffd0d0;color:#b71c1c}
+.shake{animation:sh .5s}.pulse{animation:pl .5s}
+@keyframes sh{0%,100%{transform:translateX(0)}20%{transform:translateX(-14px)}40%{transform:translateX(14px)}60%{transform:translateX(-10px)}80%{transform:translateX(10px)}}
+@keyframes pl{50%{transform:scale(1.03);box-shadow:0 0 40px #66bb6a}}
+.em{position:fixed;z-index:99;font-size:44px;pointer-events:none;animation:em 1.6s ease-out forwards}
+@keyframes em{0%{opacity:1;transform:translateY(0) scale(.6)}100%{opacity:0;transform:translateY(var(--dy)) translateX(var(--dx)) scale(1.5) rotate(200deg)}}
+.res{text-align:center}
+.res .big{font-size:90px;line-height:1.2}
+.res .sc{font-size:40px;font-weight:900;color:#0b3d91}
+.namein{width:100%;font:inherit;font-size:28px;padding:12px;border-radius:16px;border:3px solid #1565c0;text-align:center;margin:14px 0}
+.ota{width:100%;min-height:90px;font:inherit;font-size:21px;border:3px solid #90caf9;border-radius:14px;padding:10px;margin:8px 0}
+.lang2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:720px){body{font-size:20px}.lang2{grid-template-columns:1fr}.hero h2{font-size:28px}.ph{font-size:24px}}
+
+.tr{display:block;font-size:.82em;color:#6a1b9a;font-weight:700;margin-top:4px;line-height:1.7}
+.qq .tr{font-size:.8em;margin-top:8px;border-top:2px dashed #ce93d8;padding-top:6px}
+.opt .ot{display:block}
+.opt .tr{margin-inline-start:56px}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 16px!important}
+.col{min-width:0;border-radius:20px;padding:8px 6px}
+.col.en{background:#fff}.col.ar{background:#faf4ff;border:2px dashed #ce93d8}
+.col .lab{display:inline-block;background:#0b3d91;color:#fff;border-radius:20px;padding:0 16px;font-size:18px;font-weight:800;margin:4px 8px}
+.col.ar .lab{background:#6a1b9a}
+.col p,.col ul,.col h3{margin-left:8px!important;margin-right:8px!important}
+.col table{width:calc(100% - 16px);margin:10px 8px;font-size:18px}
+.col .cols{margin:10px 8px}
+.col .chips{margin:6px 8px!important}
+.col{font-size:20px}
+.ph small{display:block;font-size:20px;font-weight:600;opacity:.95;direction:rtl}
+@media(max-width:900px){.dual{grid-template-columns:1fr}}
+.pair{margin:10px 0}
+.pair .e{font-weight:700;font-size:23px;line-height:1.8}
+.pair .a{color:#4a148c;background:#f6edff;border-inline-start:6px solid #ab47bc;padding:4px 14px;border-radius:12px;margin-top:4px;font-size:21px;line-height:1.9}
+.pair.li .e{padding-inline-start:6px}
+.hh{background:linear-gradient(90deg,#e3f2fd,#fff);border-radius:14px;padding:6px 14px!important;margin-top:18px!important}
+.hh>span:first-child{display:block}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo" id="logo"></div>
+ <h1>Lesson 4: Ethical Issues with AI<small>الدرس الرابع: القضايا الأخلاقية المتعلقة بالذكاء الاصطناعي — الصف الثاني الثانوي</small></h1>
+</header>
+<main id="app"></main>
+<div id="modal" class="hidden"></div>
+<script>
+/* ===== Simple paragraph-by-paragraph bilingual lesson ===== */
+const p=(e,a)=>['p',e,a], li=(e,a)=>['li',e,a], h=(e,a)=>['h',e,a], box=(c,t,items)=>['box',c,t,items];
+function pair(e,a,c=''){return `<div class="pair ${c}"><div class="e" dir="ltr">${e}</div><div class="a" dir="rtl">${a}</div></div>`}
+function r1(x){switch(x[0]){
+ case 'h':return `<h3 class="hh"><span dir="ltr">${x[1]}</span><span class="tr" dir="rtl">${x[2]}</span></h3>`;
+ case 'p':return pair(x[1],x[2]);
+ case 'li':return pair('➤ '+x[1],'➤ '+x[2],'li');
+ case 'box':return `<div class="box ${x[1]}"><h3>${x[2][0]}<span class="tr" dir="rtl">${x[2][1]}</span></h3>${x[3].map(r1).join('')}</div>`;
+ case 'chips':return `<div class="chips" style="margin:6px 24px">${x[1].map(c=>`<span>${c[0]}<small style="display:block;font-size:15px;color:#6a1b9a" dir="rtl">${c[1]}</small></span>`).join('')}</div>`;
+ case 'pr':return `<div class="cols">${[['⚖️','Fairness','العدالة','Treat everyone equally, no unjust discrimination','عدم التمييز ظلمًا ضد أي شخص أو مجموعة','p1'],['👁️','Transparency','الشفافية','Show clearly how the AI decides and works','إظهار طريقة اتخاذ القرار وآلية العمل بوضوح','p2'],['🔒','Privacy protection','حماية الخصوصية','Handle personal information properly','التعامل مع المعلومات الشخصية بشكل مناسب','p3'],['✅','Accountability','المساءلة','Be answerable for the AI\'s decisions','تحديد المسؤول الذي يمكن محاسبته على قرارات النظام','p4']].map(c=>`<div class="pr ${c[5]}"><b>${c[0]}</b>${c[1]}<small>${c[3]}</small><small dir="rtl" style="margin-top:4px">${c[2]}: ${c[4]}</small></div>`).join('')}</div>`;
+ case 'table':return `<table>${x[1].map((r,i)=>`<tr>${r.map(c=>`<${i?'td':'th'}>${c[0]}<span class="tr" dir="rtl">${c[1]}</span></${i?'td':'th'}>`).join('')}</tr>`).join('')}</table>`;
+}}
+const LESSON=[
+{t:['🗺️ Lesson Map: What are we learning?','🗺️ خريطة الدرس: ماذا سنتعلم؟'],b:[
+ box('obj',['🎯 Learning Objectives','🎯 أهداف التعلم'],[
+  li('Explain what algorithmic bias is and what causes it.','اشرح ما هو التحيز الخوارزمي وما أسبابه الرئيسية.'),
+  li('Connect the four principles of AI ethics (fairness, transparency, privacy protection, accountability) to real situations.','اربط المبادئ الأربعة لأخلاقيات الذكاء الاصطناعي (العدالة، الشفافية، حماية الخصوصية، المساءلة) بمواقف حقيقية.'),
+  li('Judge an ethical situation about AI, justify a rule for responsible use, and name who is responsible.','قيّم موقفًا أخلاقيًا يتعلق بالذكاء الاصطناعي، وبرّر قاعدة للاستخدام المسؤول، وحدد الأطراف المسؤولة.')]),
+ box('ex',['🤔 Why do we study this?','🤔 لماذا ندرس هذا الدرس؟'],[
+  p('AI now helps make real decisions about people: choosing job candidates, recognizing faces, and deciding how personal data is used.','أصبح الذكاء الاصطناعي يساعد في قرارات حقيقية تخص الناس: اختيار المتقدمين للوظائف، والتعرف على الوجوه، وتحديد كيفية استخدام البيانات الشخصية.'),
+  p('But an AI can be unfair if the data it learned from was biased, and it can be hard to know why it made a decision.','لكن الذكاء الاصطناعي قد يكون غير عادل إذا كانت البيانات التي تعلّم منها متحيزة، وقد يصعب أن نعرف لماذا اتخذ قرارًا معينًا.')]),
+ box('think',['❓ Guiding question','❓ السؤال الرئيسي'],[p('What ethical issues arise as AI spreads, and what principles should guide how we use it?','ما القضايا الأخلاقية التي تنشأ مع انتشار الذكاء الاصطناعي، وما المبادئ التي ينبغي أن توجه استخدامنا له؟')]),
+ h('The 4 questions we ask about any AI','أربعة أسئلة نسألها عن أي ذكاء اصطناعي'),
+ li('⚖️ Fairness → Does it treat everyone fairly?','⚖️ العدالة ← هل يعامل الجميع بشكل عادل؟'),
+ li('🔍 Transparency → Can we understand why it decided?','🔍 الشفافية ← هل يمكن فهم سبب القرار؟'),
+ li('🔒 Privacy → Is personal data protected?','🔒 الخصوصية ← هل يتم حماية البيانات الشخصية؟'),
+ li('🙋 Accountability → Who is responsible for the results?','🙋 المساءلة ← من الطرف المسؤول عن النتائج؟'),
+ h('🔑 Key Concepts','🔑 المفاهيم الأساسية'),
+ ['chips',[['algorithmic bias','التحيز الخوارزمي'],['training data','بيانات التدريب'],['face recognition','التعرف على الوجه'],['privacy','الخصوصية'],['explainable AI (XAI)','الذكاء الاصطناعي القابل للتفسير'],['black-box problem','مشكلة الصندوق الأسود'],['responsibility','المسؤولية'],['fairness','العدالة'],['transparency','الشفافية'],['privacy protection','حماية الخصوصية'],['accountability','المساءلة']]],
+ box('key',['💡 The Big Idea (Key Fact)','💡 الفكرة الأساسية'],[p('If the training data is biased, an AI can copy that bias in its judgments. Using AI responsibly means: ① checking for bias, ② being able to explain decisions, ③ knowing who is accountable.','إذا كانت بيانات التدريب متحيزة، يمكن للذكاء الاصطناعي أن يكرر هذا التحيز في أحكامه. والاستخدام المسؤول يعني: ① التحقق من التحيز، ② القدرة على شرح القرارات، ③ معرفة من هو المسؤول.')]),
+ box('think',['🧑‍🤝‍🧑 Explore · In Pairs','🧑‍🤝‍🧑 استكشف (في ثنائيات)'],[p('With a partner: a face-recognition AI is more likely to misidentify people from some ethnic groups than others. Before you read on, predict who could be harmed and how. Give a reason.','مع زميل: ذكاء اصطناعي للتعرف على الوجه أكثر عرضة لإساءة التعرف على أشخاص من بعض المجموعات العرقية مقارنةً بغيرها. قبل أن تكمل القراءة، توقع من قد يتضرر وكيف، واذكر سببًا.')])
+]},
+
+{t:['1️⃣ Algorithmic Bias','1️⃣ التحيز الخوارزمي'],q:1,b:[
+ box('term',['📌 Key Term: Algorithmic bias','📌 مصطلح: التحيز الخوارزمي'],[p('Algorithmic bias = bias in AI judgments caused by bias in the training data. It is a pattern in the AI\'s results that can be unfair or harmful.','التحيز الخوارزمي = نمط في مخرجات الذكاء الاصطناعي قد يؤدي إلى نتائج غير عادلة أو ضارة، وقد ينشأ من البيانات أو تصميم النظام أو طريقة استخدامه أو السياق البشري والاجتماعي.')]),
+ box('term',['📌 Key Term: Training data','📌 مصطلح: بيانات التدريب'],[p('Training data = the examples an AI learns from before it is used. The less they represent real life, the more likely its results are biased.','بيانات التدريب = الأمثلة التي يتعلم منها نظام الذكاء الاصطناعي أنماطه قبل استخدامه. وكلما قلّ تمثيلها للواقع زاد احتمال تحيّز مخرجاته.')]),
+ box('ex',['🧒 In simple words','🧒 بكلمات بسيطة'],[p('Think of an AI as a student who learns only from the examples the teacher gives. If the examples are unfair or incomplete, the student\'s answers will be unfair too.','تخيل الذكاء الاصطناعي كطالب يتعلم فقط من الأمثلة التي يعطيها له المعلم. إذا كانت الأمثلة غير عادلة أو ناقصة، ستكون إجاباته غير عادلة أيضًا.')]),
+ h('Examples of algorithmic bias','أمثلة على التحيز الخوارزمي'),
+ li('A hiring AI that unfairly evaluates a particular gender.','نظام توظيف يفضّل فئة أو يقيّم جنسًا معينًا بصورة غير عادلة.'),
+ li('A face-recognition AI that is more likely to misidentify particular ethnic groups (its accuracy is lower for some groups).','نظام تعرف على الوجه أكثر عرضة لإساءة التعرف على مجموعات عرقية معينة (تقل دقته مع فئات معينة).'),
+ h('Main causes of bias','الأسباب الرئيسية للتحيز'),
+ box('warn',['① Biased training data','① بيانات التدريب المتحيزة'],[
+  p('Training data = the data the AI learns from. It can be biased in two ways:','بيانات التدريب هي البيانات التي يتعلم منها النظام. ويمكن أن تكون متحيزة بطريقتين:'),
+  li('(a) Not enough data about certain groups. Example: a face system trained on a huge number of photos of one group and very few photos of another becomes more accurate with the first group and less accurate with the second. Not enough data → poor learning → unfair results.','(أ) بيانات غير كافية عن سمات معينة. مثال: نظام تعرف على الوجه تم تدريبه على عدد كبير جدًا من صور فئة معينة وعدد قليل جدًا من صور فئة أخرى، فيصبح أكثر دقة مع الأولى وأقل دقة مع الثانية. بيانات غير كافية ← تعلّم غير جيد ← نتائج غير عادلة.'),
+  li('(b) Past discrimination is reflected in the data. Example: a company in the past, because of unfair human practices, chose one type of applicant more than others. If an AI is trained on that old hiring data, it may learn "people from this group are the best" and keep preferring them.','(ب) انعكاس نزعات تمييزية سابقة في البيانات. مثال: شركة كانت في الماضي، بسبب ممارسات بشرية غير عادلة، تختار نوعًا معينًا من المتقدمين أكثر من غيرهم. إذا تدرّب الذكاء الاصطناعي على هذه البيانات القديمة فقد يتعلم أن «هذه الفئة هي الأفضل» ويستمر في تفضيلها.'),
+  p('⚠️ The problem is not that the AI hates a group. It learned an unfair pattern that already exists in the data.','⚠️ المشكلة ليست أن الذكاء الاصطناعي يكره فئة معينة، لكنه تعلّم نمطًا غير عادل موجودًا بالفعل في البيانات.')]),
+ box('warn',['② The way the system is built','② طريقة بناء النظام'],[
+  p('Even if the data is good, bias can enter through the way humans designed the system. Developers make decisions while building it, and these decisions can lead to unfair results. For example:','حتى لو كانت البيانات جيدة، يمكن أن يدخل التحيز من الطريقة التي صمّم بها الإنسان النظام؛ فالمطورون يتخذون قرارات أثناء البناء قد تؤدي إلى نتائج غير عادلة. مثل:'),
+  li('an inappropriate choice of variables;','اختيار غير مناسب للمتغيرات؛'),
+  li('a proxy variable that indirectly stands in for a protected attribute;','متغير بديل يمثل بشكل غير مباشر سمة محمية؛'),
+  li('the design of the model itself.','تصميم النموذج نفسه.')]),
+ box('warn',['③ How people use it & the social context','③ طريقة الاستخدام والسياق الاجتماعي'],[p('Bias can also come from the way the system is used and from the human and social context around it. Note: unrepresentative or biased training data can contribute to unfair results.','قد ينشأ التحيز أيضًا من طريقة استخدام النظام ومن السياق البشري والاجتماعي. لاحظ: قد تسهم بيانات التدريب غير الممثلة أو المتحيزة في نتائج غير عادلة.')]),
+ box('think',['🛑 Think It Through','🛑 فكّر'],[p('A hiring AI was found to rate applicants of a particular gender lower. Explain the most likely cause and one measure to address it.','تبيّن أن ذكاءً اصطناعيًا للتوظيف يقيّم المتقدمين من جنس معين بدرجة أقل. اشرح السبب الأرجح وإجراءً واحدًا لمعالجته.')])
+]},
+
+{t:['2️⃣ Privacy Issues','2️⃣ قضايا الخصوصية'],q:2,b:[
+ box('term',['📌 Key Term: Privacy','📌 مصطلح: الخصوصية'],[p('Privacy = the appropriate handling and protection of personal data. It is a person\'s right to keep their information, personal data, and private life safe from unauthorized collection, use, or monitoring.','الخصوصية = حق الشخص في أن تظل معلوماته وبياناته الشخصية وحياته الخاصة محمية من الجمع أو الاستخدام أو المراقبة غير المسموح بها.')]),
+ p('The development of AI has created new privacy issues, because AI makes collecting and analyzing information about people easier and faster.','أدى تطور الذكاء الاصطناعي إلى ظهور قضايا جديدة تتعلق بالخصوصية، لأنه جعل جمع وتحليل معلومات الأشخاص أسهل وأسرع.'),
+ box('ex',['① 📷 Surveillance through face recognition','① 📷 المراقبة عبر تقنية التعرف على الوجه'],[
+  p('Cameras in public spaces can identify and track individuals.','يمكن للكاميرات في الأماكن العامة التعرف على الأفراد وتتبعهم.'),
+  p('An AI camera can recognize a person\'s face, decide it is the same person who appeared on another camera, and follow their movements between places.','يمكن لكاميرا الذكاء الاصطناعي أن تتعرف على وجه شخص، وتحدد أنه الشخص نفسه الذي ظهر في كاميرا أخرى، وتتابع تحركاته بين أماكن مختلفة.'),
+  p('The privacy problem: does the system have the right to recognize and track a person without their knowledge or consent? The problem is not the camera alone, but AI\'s power to analyze images and link information.','مشكلة الخصوصية: هل من حق النظام أن يتعرف على الشخص ويتتبع تحركاته دون علمه أو موافقته؟ المشكلة ليست في الكاميرا وحدها، بل في قدرة الذكاء الاصطناعي على تحليل الصور وربط المعلومات.')]),
+ box('ex',['② 🌐 Mass collection of personal data','② 🌐 الجمع الجماعي للبيانات الشخصية'],[
+  p('Large amounts of online behavior data are collected and analyzed.','تُجمع وتُحلَّل كميات كبيرة من بيانات السلوك عبر الإنترنت.'),
+  p('This means collecting huge amounts of information about people, then using AI to analyze it: websites they visit, things they watch, products they like, their searches, their online interactions, and their digital habits.','المقصود جمع كميات ضخمة من المعلومات عن الأشخاص ثم استخدام الذكاء الاصطناعي لتحليلها: المواقع التي يزورونها، وما يشاهدونه، والمنتجات التي تهمهم، وعمليات البحث، وتفاعلاتهم، وعاداتهم الرقمية.'),
+  p('AI can analyze this data very fast and find patterns and habits that may not be clear to a human.','يستطيع الذكاء الاصطناعي تحليل هذه البيانات بسرعة كبيرة واكتشاف أنماط وعادات قد لا تكون واضحة للإنسان.')]),
+ box('key',['🔒 Remember','🔒 تذكّر'],[p('Privacy: control which personal data is shared.','الخصوصية: التحكم في البيانات الشخصية التي تتم مشاركتها.')]),
+ box('think',['🛑 Think It Through','🛑 فكّر'],[p('Face recognition in public spaces may improve safety and convenience, but it raises privacy concerns. How should convenience, safety, and privacy protection be balanced? Which principle of AI ethics is most related to your view?','قد تحسّن تقنية التعرف على الوجه في الأماكن العامة السلامة والراحة، لكنها تثير مخاوف الخصوصية. كيف نوازن بين الراحة والسلامة وحماية الخصوصية؟ وأي مبدأ من مبادئ أخلاقيات الذكاء الاصطناعي يرتبط برأيك؟')])
+]},
+
+{t:['3️⃣ Explainable AI (XAI) and Responsibility','3️⃣ الذكاء الاصطناعي القابل للتفسير (XAI) والمسؤولية'],q:3,b:[
+ box('term',['📌 Key Term: Explainable AI (XAI)','📌 مصطلح: الذكاء الاصطناعي القابل للتفسير'],[p('Explainable AI (XAI) = technology that makes it possible for humans to understand why an AI made a particular judgment. XAI = Explainable AI.','الذكاء الاصطناعي القابل للتفسير (XAI) = تقنية تتيح للبشر فهم سبب اتخاذ الذكاء الاصطناعي حكمًا معينًا، وتساعد على توضيح العوامل التي أسهمت في المخرج.')]),
+ box('ex',['🔲 The black-box problem','🔲 مشكلة الصندوق الأسود'],[p('When an AI\'s decision-making process is opaque (a "black box"), it is difficult to verify whether the result is correct, and hard to find errors and bias.','عندما تكون آلية وصول الذكاء الاصطناعي إلى النتيجة غير واضحة (صندوق أسود)، يصعب التحقق من صحتها ويصعب اكتشاف الأخطاء والتحيز.'),
+  p('Example: a company uses AI to choose job applicants. The system says "This person is not suitable." We want to know why: experience? qualification? skills? If the system can show the factors behind its decision, it is called XAI.','مثال: شركة تستخدم الذكاء الاصطناعي لاختيار المتقدمين. قال النظام: «هذا الشخص غير مناسب للوظيفة». نريد أن نعرف لماذا: الخبرة؟ المؤهل؟ المهارات؟ إذا استطاع النظام توضيح العوامل التي أدت إلى القرار فهذا يسمى XAI.'),
+  p('In short: XAI answers the question "Why did the AI make this decision?"','باختصار: XAI يجيب عن سؤال: لماذا اتخذ الذكاء الاصطناعي هذا القرار؟')]),
+ box('term',['📌 Key Term: Responsibility','📌 مصطلح: المسؤولية'],[p('Responsibility = the question of who is responsible when an AI makes an incorrect judgment. It means defining the roles and duties of the parties involved in developing, operating, and using the system.','المسؤولية = مسألة من هو المسؤول عندما يتخذ الذكاء الاصطناعي حكمًا خاطئًا؛ وتعني تحديد أدوار وواجبات الأطراف المرتبطة بتطوير النظام وتشغيله واستخدامه.')]),
+ li('👩‍💻 Developer: responsible for designing and programming the system properly.','👩‍💻 المطوّر: مسؤول عن تصميم وبرمجة النظام بطريقة مناسبة.'),
+ li('🏢 Operator (the organization running it): responsible for running and using the system correctly.','🏢 الجهة المشغلة: مسؤولة عن تشغيل النظام واستخدامه بالشكل الصحيح.'),
+ li('🙋 User: responsible for using the system according to the rules and instructions.','🙋 المستخدم: مسؤول عن استخدام النظام وفق القواعد والتعليمات.'),
+ p('Views on responsibility differ depending on whether one is the developer, the user, the operator, etc. There is no single way to share responsibility that fits all cases — it depends on the type of system, how it is used, and the laws and rules.','تختلف الآراء حول المسؤولية بحسب كون الشخص مطورًا أو مستخدمًا أو مشغّلًا. ولا يوجد توزيع واحد للمسؤولية يصلح لكل الحالات؛ فهي تختلف حسب نوع النظام وطريقة استخدامه والقوانين والقواعد المعمول بها.'),
+ box('term',['📌 Key Term: Accountability','📌 مصطلح: المساءلة'],[p('Accountability = being answerable for the AI\'s decisions: identifying who is responsible for the system, its decisions, and its effects, and who can be held to account.','المساءلة = تحديد الجهات المسؤولة عن النظام وقراراته وآثاره، وإمكان محاسبتها وفق أدوارها.')]),
+ box('warn',['⚖️ XAI vs Accountability','⚖️ الفرق بين XAI والمساءلة'],[
+  li('XAI asks: How and why did the system reach this decision? (explaining the decision)','XAI يسأل: كيف ولماذا وصل النظام إلى القرار؟ (تفسير القرار)'),
+  li('Accountability asks: Who can be held to account for this decision? (who is answerable)','المساءلة تسأل: من المسؤول الذي يمكن محاسبته عن هذا القرار؟ (تحديد من يُحاسب)')]),
+ box('term',['📌 Key Term: Transparency','📌 مصطلح: الشفافية'],[p('Transparency = providing clear and appropriate information about the system, how it is used, how it makes decisions, and its limits.','الشفافية = إتاحة معلومات واضحة ومناسبة عن النظام وكيفية استخدامه وكيف يتخذ قراراته وما حدوده.')]),
+ box('think',['⏸️ Pause & Think','⏸️ توقف وفكر'],[p('If no one can explain why an AI rejected someone\'s job application, is that fair? Which principle of AI ethics is missing?','إذا لم يستطع أحد شرح سبب رفض الذكاء الاصطناعي لطلب توظيف شخص ما، فهل هذا عادل؟ أي مبدأ من مبادئ أخلاقيات الذكاء الاصطناعي مفقود؟')])
+]},
+
+{t:['4️⃣ The Basic Principles of AI Ethics','4️⃣ المبادئ الأساسية لأخلاقيات الذكاء الاصطناعي'],q:4,b:[
+ p('These four basic principles are considered important for using AI appropriately.','تُعد هذه المبادئ الأربعة مهمة للاستخدام المسؤول للذكاء الاصطناعي، من بين مبادئ أخرى.'),
+ ['pr'],
+ ['table',[[['Principle','المبدأ'],['Description','الوصف']],
+  [['Fairness','العدالة'],['Not unjustly discriminating against any particular person or group','عدم التمييز ظلمًا ضد أي شخص أو مجموعة بعينها']],
+  [['Transparency','الشفافية'],['Showing the AI\'s decision-making process and inner workings clearly','إتاحة معلومات واضحة ومناسبة عن النظام وكيف يتخذ القرار وحدوده']],
+  [['Privacy protection','حماية الخصوصية'],['Handling personal information appropriately and protecting privacy','التعامل مع المعلومات الشخصية بشكل مناسب وحماية الخصوصية']],
+  [['Accountability','المساءلة'],['Being answerable for the AI\'s decisions','تحديد الجهات المسؤولة عن النظام وقراراته وآثاره وإمكان محاسبتها']]]],
+ box('key',['🏁 Easy formula to remember','🏁 معادلة سهلة للتذكر'],[p('Responsible AI = Fairness + Transparency + Privacy + Accountability','ذكاء اصطناعي مسؤول = عدالة + شفافية + خصوصية + مساءلة')]),
+ box('sol',['✏️ Worked Example','✏️ مثال محلول'],[
+  p('(1) Mark each statement ○ (true) or × (false):','(١) ضع علامة ✓ إذا كانت العبارة صحيحة أو ✗ إذا كانت خاطئة:'),
+  li('A. Algorithmic bias is bias in AI judgments caused by bias in the training data. → ○ True (correct definition).','أ. التحيز الخوارزمي تحيز في أحكام الذكاء الاصطناعي ناتج عن تحيز بيانات التدريب. ← ✓ صحيحة.'),
+  li('B. Even if the decision process is opaque, there is no problem as long as the result is correct. → × False (if opaque, we cannot verify the result).','ب. حتى لو كانت عملية القرار غير واضحة لا توجد مشكلة طالما النتيجة صحيحة. ← ✗ خاطئة (إذا كانت غير واضحة يصعب التحقق من النتيجة).'),
+  li('C. XAI is a technology that lets humans understand the AI\'s reasoning. → ○ True.','ج. XAI تقنية تتيح للبشر فهم منطق الذكاء الاصطناعي. ← ✓ صحيحة.'),
+  li('D. When an AI makes an incorrect judgment, who is responsible has already been clearly determined. → × False (views differ; not yet clearly determined).','د. عندما يتخذ الذكاء الاصطناعي حكمًا خاطئًا، فإن المسؤول قد تحدد بوضوح بالفعل. ← ✗ خاطئة (الآراء تختلف ولم يُحسم بعد).'),
+  p('(2) Match: a) not discriminating → Fairness • b) showing the decision process → Transparency • c) protecting privacy → Privacy protection • d) being answerable → Accountability.','(٢) طابق: ١) عدم التمييز ← العدالة • ٢) إتاحة معلومات عن عملية القرار ← الشفافية • ٣) حماية المعلومات الشخصية ← حماية الخصوصية • ٤) تحديد من يُحاسب ← المساءلة.')]),
+ box('ex',['🌍 In a New Context','🌍 طبّق ما تعلمته'],[p('A school wants to use face-recognition cameras at its gate to record attendance. Name one practical benefit and one privacy concern. If the camera misidentifies a student, who should be responsible — the school or the company that made the AI? Give a reason.','ترغب مدرسة في استخدام كاميرات التعرف على الوجه عند بوابتها لتسجيل الحضور. حدد فائدة عملية واحدة ومصدر قلق واحد يتعلق بالخصوصية. وإذا أخطأت الكاميرا في التعرف على طالب فمن المسؤول: المدرسة أم الشركة المصنعة؟ اذكر سببًا.')]),
+ box('key',['❓ Lesson Question — Answered','❓ إجابة السؤال الرئيسي'],[p('Because AI now makes decisions that affect people, three concerns stand out: it can be unfair when it learns from biased data; it can put privacy at risk; and it can be hard to understand or to hold anyone answerable for its decisions. So we aim for four principles: fairness, transparency, privacy protection, and accountability.','لأن الذكاء الاصطناعي يتخذ قرارات تؤثر في الناس، تبرز ثلاث مخاوف: قد يكون غير عادل عندما يتعلم من بيانات متحيزة؛ وقد يعرّض الخصوصية للخطر؛ وقد يصعب فهمه أو تحديد من يُساءل عن قراراته. لذلك نسعى إلى أربعة مبادئ: العدالة والشفافية وحماية الخصوصية والمساءلة.')]),
+ box('think',['⭐ Reflect & Challenge','⭐ تأمل وتحدَّ نفسك'],[
+  p('Reflect: Has this lesson changed how much you would trust an AI decision about you? Which of the four principles is hardest to guarantee, and why?','تأمل: هل غيّر هذا الدرس مدى ثقتك في قرار يتخذه الذكاء الاصطناعي بشأنك؟ أي مبدأ تعتقد أنه الأصعب ضمانًا، ولماذا؟'),
+  p('Challenge: choose one place AI is used (hiring, face recognition, or recommendations) and suggest one rule that would make it more trustworthy.','تحدَّ: اختر مكانًا واحدًا يُستخدم فيه الذكاء الاصطناعي (التوظيف أو التعرف على الوجه أو التوصيات) واقترح قاعدة واحدة تجعله أكثر جدارة بالثقة.')]),
+ box('key',['⭐ Key Takeaway','⭐ الخلاصة'],[p('If training data is biased, an AI can reproduce that bias; using AI responsibly means checking for bias, being able to explain decisions, and knowing who is accountable — guided by fairness, transparency, privacy protection, and accountability.','إذا كانت بيانات التدريب متحيزة يمكن للذكاء الاصطناعي أن يكرر هذا التحيز؛ والاستخدام المسؤول يعني التحقق من التحيز والقدرة على شرح القرارات ومعرفة المسؤول — مسترشدًا بالعدالة والشفافية وحماية الخصوصية والمساءلة.')])
+]}
+];
+const TF={ar:[`✓ صح`,`✗ خطأ`],en:[`✓ True`,`✗ False`]};
+const PA=[`العدالة`,`الشفافية`,`حماية الخصوصية`,`المساءلة`],PE=[`Fairness`,`Transparency`,`Privacy protection`,`Accountability`];
+const AR=[],EF=[];
+function A(id,t,qa,oa,qe,oe,a){AR.push({id,t,ar:{q:qa,o:oa||TF.ar},en:{q:qe,o:oe||TF.en},a})}
+function E(id,t,q,o,a){EF.push({id,t,en:{q:q,o:o||TF.en},a})}
+
+/* ===== Arabic file: مثال محلول ===== */
+A('w1a','tf',`[أ] التحيز الخوارزمي نمط في مخرجات الذكاء الاصطناعي قد ينشأ من البيانات أو تصميم النظام أو طريقة استخدامه، وقد يؤدي إلى نتائج غير عادلة.`,0,`[A] Algorithmic bias is a pattern in AI outputs that may arise from the data, the system design, or the way it is used, and it may lead to unfair results.`,0,0);
+A('w1b','tf',`[ب] حتى لو كانت عملية اتخاذ القرار في الذكاء الاصطناعي غير واضحة، لا توجد مشكلة طالما أن النتيجة صحيحة.`,0,`[B] Even if the AI's decision-making process is unclear, there is no problem as long as the result is correct.`,0,1);
+A('w1c','tf',`[ج] الذكاء الاصطناعي القابل للتفسير (XAI) هو تقنية تتيح للبشر فهم منطق الذكاء الاصطناعي.`,0,`[C] Explainable AI (XAI) is a technology that allows humans to understand the logic of AI.`,0,0);
+A('w1d','tf',`[د] عندما يتخذ الذكاء الاصطناعي حكمًا خاطئًا، فإن من هو المسؤول قد تم تحديده بالفعل بوضوح.`,0,`[D] When an AI makes a wrong judgment, who is responsible has already been clearly determined.`,0,1);
+const MQ=`طابق الوصف مع أنسب مبدأ أساسي من مبادئ أخلاقيات الذكاء الاصطناعي: `, MQE=`Match the description with the most appropriate basic principle of AI ethics: `;
+A('w2_1','mc',MQ+`١- عدم التمييز ظلمًا ضد أي شخص أو مجموعة بعينها.`,PA,MQE+`1- Not discriminating unjustly against any person or specific group.`,PE,0);
+A('w2_2','mc',MQ+`٢- إتاحة معلومات واضحة ومناسبة عن النظام واستخدامه وعملية اتخاذ القرار وحدوده.`,PA,MQE+`2- Providing clear and appropriate information about the system, its use, its decision-making process, and its limits.`,PE,1);
+A('w2_3','mc',MQ+`٣- التعامل مع المعلومات الشخصية بشكل مناسب وحماية الخصوصية.`,PA,MQE+`3- Handling personal information appropriately and protecting privacy.`,PE,2);
+A('w2_4','mc',MQ+`٤- تحديد الجهات المسؤولة عن نتائج الذكاء الاصطناعي وإمكان محاسبتها.`,PA,MQE+`4- Identifying the parties responsible for the AI's results and the ability to hold them accountable.`,PE,3);
+
+/* ===== تدرب ===== */
+A('t1_1','txt',`ما المصطلح الذي يصف نمطًا في نظام ذكاء اصطناعي قد يؤدي إلى نتائج غير عادلة أو ضارة؟`,0,`What is the term that describes a pattern in an AI system that may lead to unfair or harmful results?`,0,{ar:[`التحيز الخوارزمي`,`تحيز خوارزمي`],en:[`algorithmic bias`]});
+A('t1_2','txt',`ما هو المصطلح الخاص بالتقنية التي تتيح للبشر فهم سبب اتخاذ الذكاء الاصطناعي حكمًا معينًا؟ واذكر أيضًا اختصارها المكون من ثلاثة أحرف.`,0,`What is the term for the technology that allows humans to understand why an AI made a particular judgment? Also give its three-letter abbreviation.`,0,{ar:[`الذكاء الاصطناعي القابل للتفسير`,`xai`],en:[`explainable ai`,`xai`]});
+A('t1_3','txt',`من بين المبادئ الأساسية لأخلاقيات الذكاء الاصطناعي، ما هو المصطلح الخاص بالمبدأ الذي يقتضي عدم التمييز ظلمًا ضد أي شخص أو مجموعة بعينها؟`,0,`Among the basic principles of AI ethics, what is the term for the principle that requires not discriminating unjustly against any person or specific group?`,0,{ar:[`العدالة`],en:[`fairness`]});
+A('t1_4','txt',`من بين المبادئ الأساسية لأخلاقيات الذكاء الاصطناعي، ما هو المصطلح الخاص بالمبدأ الذي يقتضي التعامل مع المعلومات الشخصية بشكل مناسب؟`,0,`Among the basic principles of AI ethics, what is the term for the principle that requires handling personal information appropriately?`,0,{ar:[`حماية الخصوصية`],en:[`privacy protection`]});
+A('t2a','mc',`من بين الخيارات التالية (أ : د)، اختر الخيار الذي ليس سببًا مناسبًا للتحيز الخوارزمي.`,[`بيانات التدريب متحيزة.`,`انعكاس نزعات تمييزية سابقة في البيانات.`,`سرعة معالجة الحاسوب بطيئة.`,`هناك بيانات غير كافية عن سمات معينة.`],`From the following options (A–D), choose the option that is NOT an appropriate cause of algorithmic bias.`,[`Training data is biased.`,`Past discriminatory tendencies are reflected in the data.`,`The computer's processing speed is slow.`,`There is insufficient data about certain attributes.`],2);
+A('t2b','multi',`من الخيارات التالية (أ : د)، اختر كل ما يمثل قضايا خصوصية مرتبطة بالذكاء الاصطناعي. (يمكن اختيار أكثر من إجابة)`,[`يتم التعرف على الأفراد وتتبعهم من خلال تقنية التعرف على الوجه.`,`تُجمع بيانات السلوك عبر الإنترنت وتُحلَّل بكميات كبيرة.`,`الذكاء الاصطناعي ينشئ أعمالًا إبداعية.`,`تتحسن سرعة حوسبة الذكاء الاصطناعي.`],`From the following options (A–D), choose all that represent privacy issues related to AI. (More than one answer may be chosen)`,[`Individuals are identified and tracked through face-recognition technology.`,`Behavior data is collected online and analyzed in large quantities.`,`AI creates creative works.`,`The computing speed of AI improves.`],[0,1]);
+
+/* ===== تمارين ===== */
+const PASS=`مع انتشار أنظمة الذكاء الاصطناعي، برزت قضايا أخلاقية متعددة. قد يظهر ( [١] ) عندما تؤدي البيانات أو طريقة تصميم النظام أو استخدامه إلى نتائج غير عادلة. ولمعالجة مشكلة «الصندوق الأسود» تُطوّر أساليب تسمى ( [٢] ) تساعد على فهم العوامل المؤثرة في المخرجات. وعندما ينتج النظام قرارًا خاطئًا أو ضارًا تُطرح مسألة ( [٣] )؛ ولا يوجد معيار واحد يوزعها بالطريقة نفسها في جميع السياقات، إذ تختلف أدوار المطورين والجهات المشغلة والمستخدمين.`;
+const PASE=`With the spread of AI systems, many ethical issues have emerged. ( [1] ) may appear when the data, the system design, or its use leads to unfair results. To address the "black box" problem, methods called ( [2] ) are being developed that help understand the factors affecting the outputs. And when the system produces a wrong or harmful decision, the question of ( [3] ) is raised; there is no single standard that distributes it in the same way in all contexts, since the roles of developers, operating bodies, and users differ.`;
+A('e1_1','txt',`اقرأ الفقرة التالية واملأ الفراغ ([١]):<br><small>${PASS}</small>`,0,`Read the following paragraph and fill in blank [1]:<br><small>${PASE}</small>`,0,{ar:[`التحيز الخوارزمي`,`تحيز خوارزمي`],en:[`algorithmic bias`]});
+A('e1_2','txt',`اقرأ الفقرة التالية واملأ الفراغ ([٢]):<br><small>${PASS}</small>`,0,`Read the following paragraph and fill in blank [2]:<br><small>${PASE}</small>`,0,{ar:[`الذكاء الاصطناعي القابل للتفسير`,`xai`],en:[`explainable ai`,`xai`]});
+A('e1_3','txt',`اقرأ الفقرة التالية واملأ الفراغ ([٣]):<br><small>${PASS}</small>`,0,`Read the following paragraph and fill in blank [3]:<br><small>${PASE}</small>`,0,{ar:[`المسؤولية`],en:[`responsibility`]});
+const PQ=`حدد أي مبدأ أساسي من مبادئ أخلاقيات الذكاء الاصطناعي يرتبط وثيقًا به:<br>`, PQE=`Identify which basic principle of AI ethics is most closely related to it:<br>`;
+A('e2_1','mc',PQ+`ضمان أن يقيّم ذكاء اصطناعي للتوظيف بعدالة بغض النظر عن الجنس.`,PA,PQE+`Ensuring that an AI used for hiring evaluates fairly regardless of gender.`,PE,0);
+A('e2_2','mc',PQ+`الإفصاح عن عملية اتخاذ القرار في الذكاء الاصطناعي للمستخدمين بطريقة سهلة الفهم.`,PA,PQE+`Disclosing the AI's decision-making process to users in an easy-to-understand way.`,PE,1);
+A('e2_3','mc',PQ+`عدم استخدام البيانات الشخصية المجمّعة لأغراض غير الغرض الأصلي منها.`,PA,PQE+`Not using collected personal data for purposes other than its original purpose.`,PE,2);
+A('e2_4','mc',PQ+`القدرة على شرح سبب التوصل إلى نتيجة تشخيصية معينة من قبل الذكاء الاصطناعي.`,PA,PQE+`The ability to explain why an AI reached a particular diagnostic result.`,PE,1);
+A('e3','mc',`من الخيارات التالية (أ : د)، اختر الخيار الذي يصف بشكل أنسب القضايا الأخلاقية المتعلقة بالذكاء الاصطناعي.`,[`لا توجد قضايا أخلاقية متعلقة بالذكاء الاصطناعي.`,`التحيز الخوارزمي ناتج عن سرعة معالجة الذكاء الاصطناعي.`,`يمكن أن يتسبب التحيز في بيانات التدريب في تحيز تمييزي في أحكام الذكاء الاصطناعي.`,`حتى لو كانت عملية اتخاذ القرار في الذكاء الاصطناعي غير واضحة، لا توجد مشكلة للمستخدمين.`],`From the following options (A–D), choose the option that best describes the ethical issues related to AI.`,[`There are no ethical issues related to AI.`,`Algorithmic bias is caused by the processing speed of AI.`,`Bias in the training data can cause discriminatory bias in AI judgments.`,`Even if the AI's decision-making process is unclear, there is no problem for users.`],2);
+
+/* ===== تدريبات الفائز - السؤال الأول (20) ===== */
+const Q1=[
+[`ما المصطلح الذي يصف نمطًا في مخرجات الذكاء الاصطناعي قد يؤدي إلى نتائج غير عادلة أو ضارة؟`,[`الشفافية`,`التحيز الخوارزمي`,`المساءلة`,`الخصوصية`],`What is the term that describes a pattern in AI outputs that may lead to unfair or harmful results?`,[`Transparency`,`Algorithmic bias`,`Accountability`,`Privacy`],1],
+[`ما أحد الأسباب الرئيسية للتحيز الخوارزمي؟`,[`بيانات التدريب المتحيزة`,`سرعة الحاسوب`,`حجم الشاشة`,`نوع لوحة المفاتيح`],`What is one of the main causes of algorithmic bias?`,[`Biased training data`,`Computer speed`,`Screen size`,`Keyboard type`],0],
+[`ماذا قد يحدث عندما تكون بيانات التدريب غير ممثلة للواقع؟`,[`زيادة سرعة النظام`,`تحسين الخصوصية`,`زيادة احتمال تحيز المخرجات`,`إلغاء التحيز`],`What may happen when the training data does not represent reality?`,[`Increased system speed`,`Improved privacy`,`Increased probability of biased outputs`,`Elimination of bias`],2],
+[`من أين يمكن أن ينشأ التحيز الخوارزمي؟`,[`من البيانات فقط`,`من تصميم النظام فقط`,`من طريقة الاستخدام فقط`,`من البيانات أو التصميم أو الاستخدام أو السياق البشري والاجتماعي`],`Where can algorithmic bias arise from?`,[`From the data only`,`From the system design only`,`From the way of use only`,`From the data, the design, the use, or the human and social context`],3],
+[`أي مما يلي يمثل مثالًا على التحيز الخوارزمي؟`,[`نظام توظيف يفضل فئة بصورة غير عادلة`,`زيادة مساحة التخزين`,`سرعة معالجة البيانات`,`تحسين جودة الشاشة`],`Which of the following is an example of algorithmic bias?`,[`A hiring system that unfairly favors one group`,`Increasing storage space`,`Data processing speed`,`Improving screen quality`],0],
+[`ما المقصود بالخصوصية؟`,[`زيادة سرعة الإنترنت`,`حماية المعلومات والبيانات الشخصية والحياة الخاصة`,`تحسين أداء الحاسوب`,`زيادة حجم البيانات`],`What is meant by privacy?`,[`Increasing internet speed`,`Protecting personal information, data, and private life`,`Improving computer performance`,`Increasing data size`],1],
+[`أي مما يلي يمثل قضية خصوصية مرتبطة بالذكاء الاصطناعي؟`,[`تحسين دقة الشاشة`,`زيادة سرعة المعالج`,`التعرف على الأفراد وتتبعهم عبر تقنية التعرف على الوجه`,`زيادة سعة التخزين`],`Which of the following is a privacy issue related to AI?`,[`Improving screen accuracy`,`Increasing processor speed`,`Identifying and tracking individuals through face-recognition technology`,`Increasing storage capacity`],2],
+[`ماذا يُقصد بالجمع الجماعي للبيانات الشخصية؟`,[`حذف البيانات الشخصية`,`حماية البيانات من الاستخدام`,`تقليل حجم البيانات`,`جمع وتحليل كميات كبيرة من بيانات السلوك عبر الإنترنت`],`What is meant by the mass collection of personal data?`,[`Deleting personal data`,`Protecting data from use`,`Reducing data size`,`Collecting and analyzing large amounts of online behavior data`],3],
+[`ما المقصود بالذكاء الاصطناعي القابل للتفسير (XAI)؟`,[`تقنية تتيح للبشر فهم سبب اتخاذ الذكاء الاصطناعي حكمًا معينًا`,`تقنية لزيادة سرعة الإنترنت`,`تقنية لحذف البيانات`,`تقنية لتخزين الملفات`],`What is meant by Explainable AI (XAI)?`,[`A technology that allows humans to understand why an AI made a particular judgment`,`A technology to increase internet speed`,`A technology to delete data`,`A technology to store files`],0],
+[`ماذا يصعب اكتشافه عندما تكون آلية الوصول إلى نتيجة الذكاء الاصطناعي غير واضحة؟`,[`حجم الشاشة`,`الأخطاء والتحيز`,`سرعة الإنترنت`,`نوع الجهاز`],`What becomes difficult to detect when the mechanism of reaching an AI result is unclear?`,[`Screen size`,`Errors and bias`,`Internet speed`,`Device type`],1],
+[`ما المقصود بالمسؤولية (Responsibility)؟`,[`إخفاء معلومات النظام`,`تفسير جميع قرارات النظام`,`تحديد أدوار وواجبات الأطراف المرتبطة بالنظام`,`جمع جميع البيانات الشخصية`],`What is meant by Responsibility?`,[`Hiding system information`,`Explaining all the system's decisions`,`Defining the roles and duties of the parties related to the system`,`Collecting all personal data`],2],
+[`ما المقصود بالمساءلة (Accountability)؟`,[`تحديد الجهات المسؤولة وإمكان محاسبتها`,`زيادة سرعة النظام`,`حماية الشاشة`,`جمع البيانات`],`What is meant by Accountability?`,[`Identifying the responsible parties and the ability to hold them accountable`,`Increasing system speed`,`Protecting the screen`,`Collecting data`],0],
+[`ما السؤال الذي ترتبط به المساءلة بشكل أساسي؟`,[`كيف يعمل الحاسوب؟`,`لماذا تم اتخاذ القرار؟`,`كيف يتم جمع البيانات؟`,`من يُحاسب على النتيجة؟`],`Which question is accountability mainly linked to?`,[`How does the computer work?`,`Why was the decision made?`,`How is data collected?`,`Who is held accountable for the result?`],3],
+[`ما المقصود بالشفافية (Transparency)؟`,[`إخفاء طريقة عمل النظام`,`إتاحة معلومات واضحة ومناسبة عن النظام واستخدامه وقراراته وحدوده`,`حذف البيانات الشخصية`,`زيادة سرعة معالجة البيانات`],`What is meant by Transparency?`,[`Hiding how the system works`,`Providing clear and appropriate information about the system, its use, its decisions, and its limits`,`Deleting personal data`,`Increasing data processing speed`],1],
+[`أي مبدأ يعني عدم التمييز ظلمًا ضد أي شخص أو مجموعة؟`,[`العدالة`,`الشفافية`,`المساءلة`,`حماية الخصوصية`],`Which principle means not discriminating unjustly against any person or group?`,[`Fairness`,`Transparency`,`Accountability`,`Privacy protection`],0],
+[`أي مبدأ يهتم بالتعامل المناسب مع المعلومات الشخصية وحمايتها؟`,[`العدالة`,`المساءلة`,`حماية الخصوصية`,`الشفافية`],`Which principle is concerned with the appropriate handling and protection of personal information?`,[`Fairness`,`Accountability`,`Privacy protection`,`Transparency`],2],
+[`أي مبدأ يركز على تحديد الجهات المسؤولة عن النظام وقراراته وآثاره؟`,[`الشفافية`,`العدالة`,`حماية الخصوصية`,`المساءلة`],`Which principle focuses on identifying the parties responsible for the system, its decisions, and its effects?`,[`Transparency`,`Fairness`,`Privacy protection`,`Accountability`],3],
+[`أي مما يلي يُعد من المبادئ الأساسية لأخلاقيات الذكاء الاصطناعي؟`,[`سرعة المعالجة`,`العدالة`,`زيادة التخزين`,`دقة الشاشة`],`Which of the following is considered one of the basic principles of AI ethics?`,[`Processing speed`,`Fairness`,`Increasing storage`,`Screen accuracy`],1],
+[`إذا لم يستطع أحد شرح سبب رفض الذكاء الاصطناعي لطلب توظيف شخص، فأي مبدأ يرتبط بهذه المشكلة؟`,[`الشفافية`,`حماية الخصوصية`,`العدالة`,`المساءلة`],`If no one can explain why an AI rejected a person's job application, which principle is related to this problem?`,[`Transparency`,`Privacy protection`,`Fairness`,`Accountability`],0],
+[`ما الذي يعنيه الاستخدام المسؤول للذكاء الاصطناعي؟`,[`الاعتماد عليه دون مراجعة`,`استخدامه لجمع أكبر قدر من البيانات`,`التحقق من التحيز وشرح القرارات ومعرفة المسؤول`,`إخفاء طريقة اتخاذ القرارات`],`What does the responsible use of AI mean?`,[`Relying on it without review`,`Using it to collect as much data as possible`,`Checking for bias, explaining decisions, and knowing who is responsible`,`Hiding how decisions are made`],2]
+];
+Q1.forEach((x,i)=>A('q1_'+(i+1),'mc',x[0],x[1],x[2],x[3],x[4]));
+
+/* ===== السؤال الثاني: صح/خطأ (19) ===== */
+const TFS=[
+[`إذا كانت بيانات التدريب متحيزة، فقد يكرر نظام الذكاء الاصطناعي هذا التحيز في أحكامه.`,`If the training data is biased, an AI system may repeat this bias in its judgments.`,0],
+[`التحيز الخوارزمي ينشأ فقط بسبب أخطاء المستخدم في تشغيل نظام الذكاء الاصطناعي.`,`Algorithmic bias arises only because of user errors in operating the AI system.`,1],
+[`يمكن أن ينشأ التحيز الخوارزمي من بيانات التدريب أو تصميم النظام أو طريقة استخدامه.`,`Algorithmic bias can arise from the training data, the system design, or the way it is used.`,0],
+[`بيانات التدريب هي الأمثلة التي يتعلم منها نظام الذكاء الاصطناعي أنماطه قبل استخدامه.`,`Training data are the examples from which an AI system learns its patterns before it is used.`,0],
+[`كلما كانت بيانات التدريب غير ممثلة للواقع، قل احتمال تحيز مخرجات الذكاء الاصطناعي.`,`The less the training data represents reality, the lower the probability of bias in the AI's outputs.`,1],
+[`قد يؤدي اختيار غير مناسب للمتغيرات أثناء تصميم النظام إلى نتائج غير عادلة.`,`An inappropriate choice of variables during system design may lead to unfair results.`,0],
+[`لا يمكن أن يحدث التحيز في نظام الذكاء الاصطناعي إذا كانت بيانات التدريب جيدة.`,`Bias cannot occur in an AI system if the training data is good.`,1],
+[`الخصوصية تعني حماية المعلومات والبيانات الشخصية والحياة الخاصة من الجمع أو الاستخدام أو المراقبة غير المسموح بها.`,`Privacy means protecting personal information, data, and private life from unauthorized collection, use, or monitoring.`,0],
+[`يمكن لتقنية التعرف على الوجه في الأماكن العامة أن تثير مخاوف تتعلق بالخصوصية.`,`Face-recognition technology in public places can raise privacy concerns.`,0],
+[`الذكاء الاصطناعي القابل للتفسير (XAI) يساعد البشر على فهم أسباب اتخاذ النظام لقرار معين.`,`Explainable AI (XAI) helps humans understand the reasons why a system made a particular decision.`,0],
+[`المساءلة تعني القدرة على شرح كيفية اتخاذ الذكاء الاصطناعي للقرار فقط.`,`Accountability means only the ability to explain how the AI made the decision.`,1],
+[`المسؤولية تتعلق بتحديد أدوار وواجبات الأطراف المرتبطة بتطوير النظام وتشغيله واستخدامه.`,`Responsibility is related to defining the roles and duties of the parties involved in developing, operating, and using the system.`,0],
+[`الشفافية تعني إتاحة معلومات واضحة ومناسبة عن النظام وكيفية استخدامه وكيف يتخذ قراراته وحدوده.`,`Transparency means providing clear and appropriate information about the system, how it is used, how it makes its decisions, and its limits.`,0],
+[`مبدأ العدالة يعني عدم التمييز ظلمًا ضد أي شخص أو مجموعة بعينها.`,`The principle of fairness means not discriminating unjustly against any person or specific group.`,0],
+[`حماية الخصوصية تعني التعامل مع المعلومات الشخصية دون الاهتمام بحمايتها.`,`Privacy protection means handling personal information without caring about protecting it.`,1],
+[`من قضايا الخصوصية المرتبطة بالذكاء الاصطناعي جمع وتحليل كميات كبيرة من بيانات السلوك عبر الإنترنت.`,`Among the privacy issues related to AI is collecting and analyzing large amounts of online behavior data.`,0],
+[`إذا كان سبب قرار الذكاء الاصطناعي غير واضح، فإن ذلك قد يجعل تقييم القرار واكتشاف الأخطاء والتحيز أمرًا صعبًا.`,`If the reason for an AI's decision is unclear, this may make evaluating the decision and detecting errors and bias difficult.`,0],
+[`المبادئ الأساسية الأربعة التي يركز عليها الدرس هي العدالة والشفافية وحماية الخصوصية والمساءلة.`,`The four basic principles the lesson focuses on are fairness, transparency, privacy protection, and accountability.`,0],
+[`سرعة معالجة الحاسوب البطيئة تُعد سببًا رئيسيًا للتحيز الخوارزمي.`,`The slow processing speed of a computer is considered a main cause of algorithmic bias.`,1]
+];
+TFS.forEach((x,i)=>A('tf'+(i+1),'tf',x[0],0,x[1],0,x[2]));
+
+/* ===== السؤال الثالث: أكمل من بين القوسين ===== */
+const WA=[`XAI`,`الخصوصية`,`حماية الخصوصية`,`العدالة`,`المساءلة`],WE=[`XAI`,`Privacy`,`Privacy protection`,`Fairness`,`Accountability`];
+const Q3=[
+[`حق الشخص في أن تظل معلوماته وبياناته وحياته الخاصة محمية يسمى ......`,`A person's right to have his information, data, and private life remain protected is called ......`,1],
+[`الذكاء الاصطناعي القابل للتفسير يُختصر باللغة الإنجليزية إلى ......`,`Explainable AI is abbreviated in English to ......`,0],
+[`تحديد الجهات المسؤولة عن النظام وقراراته وآثاره وإمكان محاسبتها يسمى ......`,`Identifying the parties responsible for the system, its decisions, and its effects, and the ability to hold them accountable is called ......`,4],
+[`التعامل مع المعلومات الشخصية بشكل مناسب وحماية الخصوصية هو مبدأ ......`,`Handling personal information appropriately and protecting privacy is the principle of ......`,2],
+[`عدم التمييز ظلمًا ضد أي شخص أو مجموعة بعينها هو مبدأ ......`,`Not discriminating unjustly against any person or specific group is the principle of ......`,3]
+];
+Q3.forEach((x,i)=>A('q3_'+(i+1),'mc',`أكمل العبارة التالية من بين القوسين: ${x[0]}`,WA,`Complete the following statement from the options: ${x[1]}`,WE,x[2]));
+
+/* ===== السؤال الرابع: اذكر المصطلح العلمي ===== */
+const Q4=[
+[`نمط في مخرجات الذكاء الاصطناعي قد يؤدي إلى نتائج غير عادلة أو ضارة، وقد ينشأ من البيانات أو تصميم النظام أو طريقة استخدامه.`,`A pattern in AI outputs that may lead to unfair or harmful results, and may arise from the data, the system design, or the way it is used.`,[`التحيز الخوارزمي`,`تحيز خوارزمي`],[`algorithmic bias`]],
+[`الأمثلة التي يتعلم منها نظام الذكاء الاصطناعي أنماطه قبل استخدامه.`,`The examples from which an AI system learns its patterns before it is used.`,[`بيانات التدريب`],[`training data`]],
+[`حق الشخص في أن تظل معلوماته وبياناته وحياته الخاصة محمية من الجمع أو الاستخدام أو المراقبة غير المسموح بها.`,`A person's right to have his information, data, and private life protected from unauthorized collection, use, or monitoring.`,[`الخصوصية`],[`privacy`]],
+[`تقنية تتيح للبشر فهم سبب اتخاذ الذكاء الاصطناعي حكمًا معينًا.`,`A technology that allows humans to understand why an AI made a particular judgment.`,[`الذكاء الاصطناعي القابل للتفسير`,`xai`],[`explainable ai`,`xai`]],
+[`تحديد أدوار وواجبات الأطراف المرتبطة بتطوير نظام الذكاء الاصطناعي وتشغيله واستخدامه.`,`Defining the roles and duties of the parties related to developing, operating, and using an AI system.`,[`المسؤولية`],[`responsibility`]],
+[`تحديد الجهات المسؤولة عن النظام وقراراته وآثاره، وإمكان محاسبتها وفق أدوارها.`,`Identifying the parties responsible for the system, its decisions, and its effects, and the ability to hold them accountable according to their roles.`,[`المساءلة`],[`accountability`]],
+[`إتاحة معلومات واضحة ومناسبة عن النظام وكيفية استخدامه وكيف يتخذ قراراته وحدوده.`,`Providing clear and appropriate information about the system, how it is used, how it makes its decisions, and its limits.`,[`الشفافية`],[`transparency`]],
+[`مبدأ يعني عدم التمييز ظلمًا ضد أي شخص أو مجموعة بعينها.`,`A principle that means not discriminating unjustly against any person or specific group.`,[`العدالة`],[`fairness`]],
+[`مبدأ يعني التعامل مع المعلومات الشخصية بشكل مناسب وحماية الخصوصية.`,`A principle that means handling personal information appropriately and protecting privacy.`,[`حماية الخصوصية`],[`privacy protection`]],
+[`مشكلة تحدث عندما تكون آلية وصول نظام الذكاء الاصطناعي إلى النتيجة غير واضحة، مما يصعب تقييمها واكتشاف الأخطاء أو التحيز.`,`A problem that occurs when the mechanism by which an AI system reaches a result is unclear, making it hard to evaluate it and detect errors or bias.`,[`الصندوق الاسود`],[`black box`]]
+];
+Q4.forEach((x,i)=>A('q4_'+(i+1),'txt',`اذكر المصطلح العلمي أو المفهوم العلمي: ${x[0]}`,0,`State the scientific term or concept: ${x[1]}`,0,{ar:x[2],en:x[3]}));
+
+/* ===== السؤال الخامس: أكمل مكان النقط ===== */
+const Q5=[
+[`التحيز الخوارزمي هو نمط في مخرجات الذكاء الاصطناعي قد يؤدي إلى نتائج ...... أو ضارة.`,`Algorithmic bias is a pattern in AI outputs that may lead to ...... or harmful results.`,[`غير عادلة`],[`unfair`]],
+[`يمكن أن ينشأ التحيز الخوارزمي من بيانات التدريب أو تصميم النظام أو طريقة ...... النظام.`,`Algorithmic bias can arise from the training data, the system design, or the way the system is ......`,[`استخدام`],[`used`,`use`]],
+[`الأمثلة التي يتعلم منها نظام الذكاء الاصطناعي أنماطه قبل استخدامه تسمى ......`,`The examples from which an AI system learns its patterns before it is used are called ......`,[`بيانات التدريب`],[`training data`]],
+[`كلما قل تمثيل بيانات التدريب للواقع زاد احتمال ...... مخرجات الذكاء الاصطناعي.`,`The less the training data represents reality, the greater the probability of ...... in the AI's outputs.`,[`تحيز`],[`bias`]],
+[`إتاحة معلومات واضحة ومناسبة عن النظام وكيفية استخدامه وكيف يتخذ قراراته تسمى ......`,`Providing clear and appropriate information about the system, how it is used, and how it makes its decisions is called ......`,[`الشفافية`],[`transparency`]],
+[`من أمثلة قضايا الخصوصية استخدام تقنية التعرف على ...... في الأفراد وتتبعهم.`,`Among the examples of privacy issues is using ...... recognition technology on individuals and tracking them.`,[`الوجه`],[`face`]],
+[`قد يدخل التحيز في نظام الذكاء الاصطناعي بسبب الطريقة التي ...... بها الإنسان النظام.`,`Bias may enter an AI system because of the way the human ...... the system.`,[`صممه`,`صمم`],[`designed`,`design`]],
+[`المبادئ الأساسية الأربعة لأخلاقيات الذكاء الاصطناعي هي العدالة والشفافية وحماية الخصوصية و......`,`The four basic principles of AI ethics are fairness, transparency, privacy protection, and ......`,[`المساءلة`],[`accountability`]]
+];
+Q5.forEach((x,i)=>A('q5_'+(i+1),'txt',`أكمل مكان النقط في العبارة التالية بما هو مناسب: ${x[0]}`,0,`Complete the dots in the following statement appropriately: ${x[1]}`,0,{ar:x[2],en:x[3]}));
+
+/* ===== English file (PONY) ===== */
+E('ew1a','tf',`(1) A: Algorithmic bias is bias in AI judgments caused by bias in the training data.`,0,0);
+E('ew1b','tf',`(1) B: Even if an AI's decision-making process is opaque, there is no problem as long as the result is correct.`,0,1);
+E('ew1c','tf',`(1) C: Explainable AI (XAI) is a technology that makes it possible for humans to understand the AI's reasoning.`,0,0);
+E('ew1d','tf',`(1) D: When an AI makes an incorrect judgment, who is responsible has already been clearly determined.`,0,1);
+const EM=`(2) Match the description with the most appropriate AI ethics basic principle: `;
+E('ew2a','mc',EM+`a. Not unjustly discriminating against any particular person or group`,PE,0);
+E('ew2b','mc',EM+`b. Showing the AI's decision-making process and inner workings clearly`,PE,1);
+E('ew2c','mc',EM+`c. Handling personal information appropriately and protecting privacy`,PE,2);
+E('ew2d','mc',EM+`d. Being answerable for the AI's decisions`,PE,3);
+E('et1_1','txt',`Try 1.1 — What is the term for the phenomenon in which bias arises in AI judgments due to bias in the training data?`,0,{en:[`algorithmic bias`]});
+E('et1_2','txt',`Try 1.2 — What is the term for the technology that makes it possible for humans to understand why an AI made a particular judgment? Also, give its three-letter abbreviation.`,0,{en:[`explainable ai`,`xai`]});
+E('et1_3','txt',`Try 1.3 — Among the basic principles of AI ethics, what is the term for the principle that requires not unjustly discriminating against any particular person or group?`,0,{en:[`fairness`]});
+E('et1_4','txt',`Try 1.4 — Among the basic principles of AI ethics, what is the term for the principle that requires handling personal information appropriately?`,0,{en:[`privacy protection`]});
+E('et2a','mc',`Try 2 (1) — From the following options (A–D), choose the one that is NOT an appropriate cause of algorithmic bias.`,[`Training data is biased.`,`Past discriminatory tendencies are reflected in the data.`,`The processing speed of the computer is slow.`,`There is insufficient data on certain attributes.`],2);
+E('et2b','multi',`Try 2 (2) — From the following options (A–D), choose ALL that are privacy issues associated with AI.`,[`Individuals are identified and tracked through face-recognition technology.`,`Online behavior data is collected and analyzed in large quantities.`,`AI creates creative works.`,`AI computation speed improves.`],[0,1]);
+E('ee2a','txt',`Exercise 2 — Read the passage and fill in blank (a):<br><small>${PASE.replace(/\[1\]/,'a').replace(/\[2\]/,'b').replace(/\[3\]/,'c')}</small>`,0,{en:[`algorithmic bias`]});
+E('ee2b','txt',`Exercise 2 — Read the passage and fill in blank (b):<br><small>${PASE.replace(/\[1\]/,'a').replace(/\[2\]/,'b').replace(/\[3\]/,'c')}</small>`,0,{en:[`explainable ai`,`xai`]});
+E('ee2c','txt',`Exercise 2 — Read the passage and fill in blank (c):<br><small>${PASE.replace(/\[1\]/,'a').replace(/\[2\]/,'b').replace(/\[3\]/,'c')}</small>`,0,{en:[`responsibility`]});
+const EX3=`Exercise 3 (1) — Which AI ethics basic principle is most closely related to: `;
+E('ee3a','mc',EX3+`a. Ensuring that a hiring AI evaluates fairly regardless of gender.`,PE,0);
+E('ee3b','mc',EX3+`b. Disclosing the AI's decision-making process to users in an easy-to-understand way.`,PE,1);
+E('ee3c','mc',EX3+`c. Not using collected personal data for purposes other than as originally intended.`,PE,2);
+E('ee3d','mc',EX3+`d. Being answerable when an AI's diagnostic result turns out to be wrong.`,PE,3);
+E('ee3q','mc',`Exercise 3 (2) — From the following options (A–D), choose the one that most appropriately describes ethical issues with AI.`,[`There are no ethical issues with AI.`,`Algorithmic bias is caused by the AI's processing speed.`,`Bias in training data can cause discriminatory bias in AI judgments.`,`Even if an AI's decision-making process is opaque, there is no problem for users.`],2);
+
+/* ===== Parts (5 questions each) ===== */
+const PARTS={
+ar:{1:['q1_1','q1_2','q1_3','q1_4','q1_5'],2:['q1_6','q1_7','q1_8','tf9','tf16'],3:['q1_9','q1_10','q1_11','q1_12','q1_13'],4:['q1_14','q1_15','q1_16','q1_17','q1_19']},
+en:{1:['ew1a','et1_1','et2a','ee2a','ee3a'],2:['et2b','ee3c','ew2c','et1_4','ee3q'],3:['ew1b','ew1c','ew1d','et1_2','ee2c'],4:['et1_3','ew2a','ew2b','ew2d','ee3b']}
+};
+
+/* ===== Open / thinking questions (with model answers) ===== */
+const OPEN=[
+{ar:{q:`🧑‍🤝‍🧑 استكشف (في ثنائيات): ذكاء اصطناعي للتعرف على الوجه أكثر عرضة لإساءة التعرف على أشخاص من بعض المجموعات العرقية مقارنةً بغيرها. توقع من قد يتضرر من هذا وكيف. اذكر سببًا.`,a:`قد يتضرر أفراد المجموعات التي يخطئ النظام في التعرف عليها أكثر؛ فقد يُشتبه بهم خطأً أو يُمنعون من خدمة أو يُعاملون بغير عدل. والسبب أن بيانات التدريب قد تحتوي على صور قليلة منهم فتقل دقة النظام معهم. (توجد أكثر من إجابة مقبولة).`},
+ en:{q:`🧑‍🤝‍🧑 Explore (in pairs): A face-recognition AI is more likely to misidentify people from some ethnic groups than others. Predict who could be harmed and how. Give a reason.`,a:`People from the groups the system misidentifies more often could be harmed: they might be wrongly suspected, denied a service, or treated unfairly. A likely reason is that the training data had fewer images of them, so the system is less accurate for them. (More than one reasonable answer is possible.)`}},
+{ar:{q:`🛑 توقف وفكر: عند استخدام تقنية التعرف على الوجه في الأماكن العامة، قد تتحسن السلامة والراحة، لكن تنشأ أيضًا مخاوف بشأن الخصوصية. اشرح كيف ينبغي الموازنة بين الراحة والسلامة وحماية الخصوصية، واذكر أي مبدأ أساسي من مبادئ أخلاقيات الذكاء الاصطناعي يرتبط ارتباطًا وثيقًا برأيك.`,a:`ينبغي استخدام التقنية في حالات ضرورية وبحدود واضحة، مع إعلام الناس بوجود الكاميرات، وجمع أقل قدر من البيانات وحمايتها وعدم استخدامها لغير الغرض المعلن. المبدأ الأقرب: حماية الخصوصية (ويمكن ذكر الشفافية أو المساءلة بحسب رأيك مع التبرير).`},
+ en:{q:`🛑 Think It Through: When face-recognition technology is used in public spaces, safety and convenience may improve, but privacy concerns also arise. Explain how convenience, safety, and privacy protection should be balanced, and state which basic principle of AI ethics is most closely related to your view.`,a:`The technology should be used only where necessary and within clear limits, people should be told that cameras are in use, as little data as possible should be collected, protected, and never used for a different purpose. Closest principle: privacy protection (transparency or accountability can also be argued with a reason).`}},
+{ar:{q:`🛑 توقف وفكر: إذا لم يستطع أحد شرح سبب رفض الذكاء الاصطناعي لطلب توظيف شخص ما، فهل هذا عادل؟ أي مبدأ من مبادئ أخلاقيات الذكاء الاصطناعي مفقود؟`,a:`ليس عادلًا؛ لأنه يصعب اكتشاف الخطأ أو التحيز إذا لم يُشرح سبب القرار. المبدأ المفقود هو الشفافية (ومعها القابلية للتفسير XAI).`},
+ en:{q:`⏸️ Pause & Think: If no one can explain why an AI rejected someone's job application, is that fair? Which principle of AI ethics is missing?`,a:`It is not fair, because without an explanation it is hard to detect mistakes or bias. The missing principle is transparency (supported by explainable AI, XAI).`}},
+{ar:{q:`📝 سؤال على نمط الامتحان [٦ درجات]: حلّل كيف يمكن أن ينشأ التحيز الخوارزمي في نظام ذكاء اصطناعي، وكيف يمكن تقليله. في إجابتك، أشر إلى سبب التحيز (بيانات تدريب متحيزة أو غير كافية) وإلى كيفية مساعدة مبدأي العدالة والشفافية في معالجته.`,a:`ينشأ التحيز عندما تكون بيانات التدريب متحيزة أو غير كافية عن فئات معينة، أو تعكس تمييزًا سابقًا، وقد يدخل أيضًا من اختيار المتغيرات أو تصميم النموذج أو طريقة الاستخدام. يمكن تقليله بتطبيق مبدأ العدالة: فحص مدى تمثيل البيانات واختبار النتائج عبر فئات مختلفة وتصحيح الاختلالات؛ وبتطبيق مبدأ الشفافية: إتاحة معلومات واضحة عن كيفية اتخاذ القرار حتى يمكن اكتشاف التحيز والأخطاء ومراجعتها، مع تحديد من المسؤول عن التصحيح.`},
+ en:{q:`📝 Exam-style question [6]: Analyze how algorithmic bias can arise in an AI system, and how it can be reduced. In your answer: refer to the cause of bias (biased or insufficient training data) and to how the principles of fairness and transparency help address it.`,a:`Bias arises when training data is biased or insufficient about certain groups, or reflects past discrimination; it can also enter through the choice of variables, the model design, or the way the system is used. It can be reduced by applying fairness: checking how well the data represents groups, testing results across different groups, and correcting imbalances; and by applying transparency: giving clear information about how decisions are made so bias and errors can be detected and reviewed, and deciding who is responsible for correcting them.`}},
+{ar:{q:`⚙️ فكّر كمهندس — ابحث ثم قرر: ① استقصِ: ابحث عن حالة موثقة اتُّهم فيها نظام ذكاء اصطناعي بإنتاج نتائج غير عادلة أو متحيزة، وسجل المصدر. ما الفئة التي تأثرت؟ وما العوامل في البيانات أو تصميم النظام أو استخدامه؟ ② اعتبر المسؤولية: من المسؤول — المطوّر، أم الشركة التي تستخدمه، أم المشغّل؟ دوّن مسؤولية كل منهم. ③ قرر: ما القاعدة الواحدة التي ينبغي أن تتبعها شركة تستخدم ذكاءً اصطناعيًا للتوظيف لجعل النظام أكثر عدالة؟ برّر قاعدتك بمبادئ أخلاقيات الذكاء الاصطناعي. (تلميح: افحص مدى تمثيل البيانات، ثم اختبر النتائج عبر فئات مختلفة.)`,a:`① مثال معروف: أداة توظيف تجريبية في شركة كبرى أعطت تقييمًا أقل للمتقدمات بسبب تدريبها على سير ذاتية سابقة أغلبها لرجال (اختر مصدرك وسجله). ② المطوّر مسؤول عن التصميم والاختبار، والشركة المشغلة عن حسن الاستخدام والمراجعة البشرية، والمستخدم عن اتباع التعليمات؛ ولا يوجد توزيع واحد يصلح لكل الحالات. ③ قاعدة مقترحة: «لا يُستخدم النظام قبل اختبار نتائجه عبر الجنسين والفئات المختلفة وتصحيح أي فروق»، وتبريرها بمبدأ العدالة، مع الشفافية لتوضيح أسباب القرار.`},
+ en:{q:`⚙️ Think as an Engineer — Investigate & Decide: 1 Investigate: find one documented case where an AI system was accused of being unfair or biased and record your source. What group did it affect, and what data might have caused it? 2 Consider responsibility: who is responsible — the developer, the company using it, or the operator? Note each one's responsibility. 3 Decide: before a company uses a hiring AI, what one rule should it follow to make the system fairer? Justify your rule using the principles of AI ethics. (Stuck? Check the data and test the AI's results across different groups.)`,a:`1 A well-known example: an experimental hiring tool at a large company rated women lower because it was trained on past résumés that were mostly from men (choose and record your own source). 2 The developer is responsible for design and testing; the company using it for proper use and human review; the user for following the rules; there is no single distribution that fits every case. 3 Suggested rule: "Do not use the system until its results have been tested across genders and other groups and any gap is corrected" — justified by fairness, with transparency to explain decisions.`}},
+{ar:{q:`🌍 طبّق ما تعلمته: ترغب مدرسة في استخدام كاميرات التعرف على الوجه عند بوابتها لتسجيل الحضور تلقائيًا. حدد فائدة عملية واحدة للمدرسة ومصدر قلق واحد يتعلق بالخصوصية. ثم، إذا أخطأت الكاميرا في التعرف على طالب، من ينبغي أن يكون مسؤولًا — المدرسة، أم الشركة التي صنعت الذكاء الاصطناعي؟ اذكر سببًا.`,a:`الفائدة: توفير وقت تسجيل الحضور. القلق: تخزين صور الطلاب وبياناتهم وتتبع حركتهم دون موافقة أو حماية كافية. المسؤولية: يمكن القول إن المدرسة مسؤولة لأنها اختارت النظام وتشغّله وتحمي بيانات طلابها، ويمكن القول إن الشركة مسؤولة عن تصميم واختبار النظام جيدًا؛ والأقرب أن المسؤولية مشتركة بحسب الدور (توجد أكثر من إجابة مقبولة مع التبرير).`},
+ en:{q:`🌍 In a New Context: A school wants to use face-recognition cameras at its gate to record attendance automatically. Identify one practical benefit for the school and one privacy concern. Then, if the camera misidentifies a student, who should be responsible — the school, or the company that made the AI? Give a reason.`,a:`Benefit: saves time when recording attendance. Concern: students' photos and data could be stored and their movements tracked without consent or enough protection. Responsibility: the school can be held responsible because it chose and runs the system and protects student data; the company is responsible for designing and testing it well; most reasonably the responsibility is shared according to each role (more than one answer is acceptable with a reason).`}},
+{ar:{q:`💭 فكّر: وُجد أن ذكاءً اصطناعيًا للتوظيف يقيّم المتقدمين من جنس معين بدرجة أقل. باستخدام أفكار التحيز الخوارزمي والمبادئ الأساسية لأخلاقيات الذكاء الاصطناعي، اشرح السبب الأرجح وإجراءً واحدًا ممكنًا لمعالجته. (قد توجد أكثر من وجهة نظر معقولة.)`,a:`السبب الأرجح: تدريب النظام على بيانات توظيف سابقة تعكس تفضيلًا لجنس معين أو وجود متغير بديل يمثل الجنس بشكل غير مباشر. الإجراء: فحص البيانات وتوازنها واختبار النتائج عبر الجنسين (العدالة)، وتوضيح أسباب القرار (الشفافية/XAI)، ومراجعة بشرية مع تحديد المسؤول (المساءلة).`},
+ en:{q:`💭 Think It Through: A hiring AI was found to rate applicants of a particular gender lower. Using the ideas of algorithmic bias and the basic principles of AI ethics, explain the most likely cause and one possible measure to address it. There can be more than one reasonable view. Give the basis for your answer.`,a:`Most likely cause: the system was trained on past hiring data that reflects a preference for one gender, or it uses a proxy variable that indirectly stands in for gender. Measure: check and balance the data and test results across genders (fairness), explain the reasons for decisions (transparency/XAI), and add human review with a named responsible party (accountability).`}},
+{ar:{q:`⭐ تأمل وتحدَّ نفسك: هل غيّر هذا الدرس مدى ثقتك في قرار يتخذه الذكاء الاصطناعي بشأنك؟ أي من المبادئ الأربعة تعتقد أنه الأصعب ضمانًا، ولماذا؟ ثم اختر مكانًا واحدًا يُستخدم فيه الذكاء الاصطناعي (التوظيف، أو التعرف على الوجه، أو التوصيات)، واقترح قاعدة واحدة مبنية على مبادئ أخلاقيات الذكاء الاصطناعي من شأنها أن تجعله أكثر جدارة بالثقة.`,a:`إجابة حرة تعبّر عن رأيك مع السبب. مثال: الشفافية قد تكون الأصعب لأن بعض النماذج معقدة ويصعب تفسيرها. قاعدة مقترحة للتوصيات: «أن يعرف المستخدم لماذا ظهرت له التوصية وأن يستطيع إيقاف جمع بياناته» (الشفافية وحماية الخصوصية).`},
+ en:{q:`⭐ Reflect & Challenge: Has this lesson changed how much you would trust an AI decision about you? Which of the four principles do you think is hardest to guarantee, and why? Then choose one place AI is used (hiring, face recognition, or recommendations) and suggest one rule based on the AI ethics principles that would make it more trustworthy.`,a:`A free answer giving your own view with a reason. Example: transparency may be hardest because some models are complex and hard to explain. Suggested rule for recommendations: "Users must be told why an item was recommended and be able to stop their data from being collected" (transparency and privacy protection).`}}
+];
+const PASA=PASS.replace('[١]','أ').replace('[٢]','ب').replace('[٣]','ج');
+const EFAR={
+ew1a:[`(١) أ: التحيز الخوارزمي هو تحيز في أحكام الذكاء الاصطناعي ناتج عن تحيز في بيانات التدريب.`],
+ew1b:[`(١) ب: حتى لو كانت عملية اتخاذ القرار في الذكاء الاصطناعي غير شفافة (مبهمة)، فلا توجد مشكلة طالما أن النتيجة صحيحة.`],
+ew1c:[`(١) ج: الذكاء الاصطناعي القابل للتفسير (XAI) هو تقنية تتيح للبشر فهم منطق الذكاء الاصطناعي.`],
+ew1d:[`(١) د: عندما يتخذ الذكاء الاصطناعي حكمًا خاطئًا، فإن من هو المسؤول قد تم تحديده بوضوح بالفعل.`],
+ew2a:[MQ+`أ. عدم التمييز ظلمًا ضد أي شخص أو مجموعة بعينها`],
+ew2b:[MQ+`ب. إظهار عملية اتخاذ القرار في الذكاء الاصطناعي وآلياته الداخلية بوضوح`],
+ew2c:[MQ+`ج. التعامل مع المعلومات الشخصية بشكل مناسب وحماية الخصوصية`],
+ew2d:[MQ+`د. أن يكون الشخص مسؤولًا أمام الآخرين (قابلًا للمساءلة) عن قرارات الذكاء الاصطناعي`],
+et1_1:[`تدرب ١-١: ما المصطلح الذي يصف الظاهرة التي ينشأ فيها تحيز في أحكام الذكاء الاصطناعي بسبب تحيز في بيانات التدريب؟`,,[`التحيز الخوارزمي`,`تحيز خوارزمي`]],
+et1_2:[`تدرب ١-٢: ما المصطلح الخاص بالتقنية التي تتيح للبشر فهم سبب اتخاذ الذكاء الاصطناعي حكمًا معينًا؟ واذكر أيضًا اختصارها المكون من ثلاثة أحرف.`,,[`الذكاء الاصطناعي القابل للتفسير`,`xai`]],
+et1_3:[`تدرب ١-٣: من بين المبادئ الأساسية لأخلاقيات الذكاء الاصطناعي، ما المصطلح الخاص بالمبدأ الذي يقتضي عدم التمييز ظلمًا ضد أي شخص أو مجموعة بعينها؟`,,[`العدالة`]],
+et1_4:[`تدرب ١-٤: من بين المبادئ الأساسية لأخلاقيات الذكاء الاصطناعي، ما المصطلح الخاص بالمبدأ الذي يقتضي التعامل مع المعلومات الشخصية بشكل مناسب؟`,,[`حماية الخصوصية`]],
+et2a:[`تدرب ٢ (١): من بين الخيارات التالية (أ–د)، اختر الخيار الذي ليس سببًا مناسبًا للتحيز الخوارزمي.`,[`بيانات التدريب متحيزة.`,`انعكاس نزعات تمييزية سابقة في البيانات.`,`سرعة معالجة الحاسوب بطيئة.`,`هناك بيانات غير كافية عن سمات معينة.`]],
+et2b:[`تدرب ٢ (٢): من بين الخيارات التالية (أ–د)، اختر كل ما يمثل قضايا خصوصية مرتبطة بالذكاء الاصطناعي.`,[`يتم التعرف على الأفراد وتتبعهم من خلال تقنية التعرف على الوجه.`,`تُجمع بيانات السلوك عبر الإنترنت وتُحلَّل بكميات كبيرة.`,`الذكاء الاصطناعي ينشئ أعمالًا إبداعية.`,`تتحسن سرعة حوسبة الذكاء الاصطناعي.`]],
+ee2a:[`تمرين ٢: اقرأ الفقرة واملأ الفراغ (أ):<br><small>${PASA}</small>`,,[`التحيز الخوارزمي`,`تحيز خوارزمي`]],
+ee2b:[`تمرين ٢: اقرأ الفقرة واملأ الفراغ (ب):<br><small>${PASA}</small>`,,[`الذكاء الاصطناعي القابل للتفسير`,`xai`]],
+ee2c:[`تمرين ٢: اقرأ الفقرة واملأ الفراغ (ج):<br><small>${PASA}</small>`,,[`المسؤولية`]],
+ee3a:[`تمرين ٣ (١): أي مبدأ أساسي من مبادئ أخلاقيات الذكاء الاصطناعي يرتبط وثيقًا بـ: أ. ضمان أن يقيّم ذكاء اصطناعي للتوظيف بعدالة بغض النظر عن الجنس.`],
+ee3b:[`تمرين ٣ (١): أي مبدأ أساسي من مبادئ أخلاقيات الذكاء الاصطناعي يرتبط وثيقًا بـ: ب. الإفصاح عن عملية اتخاذ القرار في الذكاء الاصطناعي للمستخدمين بطريقة سهلة الفهم.`],
+ee3c:[`تمرين ٣ (١): أي مبدأ أساسي من مبادئ أخلاقيات الذكاء الاصطناعي يرتبط وثيقًا بـ: ج. عدم استخدام البيانات الشخصية المجمّعة لأغراض غير الغرض الأصلي منها.`],
+ee3d:[`تمرين ٣ (١): أي مبدأ أساسي من مبادئ أخلاقيات الذكاء الاصطناعي يرتبط وثيقًا بـ: د. أن يكون الشخص مسؤولًا أمام الآخرين عندما تتبين خطأ نتيجة تشخيصية صادرة عن الذكاء الاصطناعي.`],
+ee3q:[`تمرين ٣ (٢): من بين الخيارات التالية (أ–د)، اختر الخيار الذي يصف بشكل أنسب القضايا الأخلاقية المتعلقة بالذكاء الاصطناعي.`,[`لا توجد قضايا أخلاقية متعلقة بالذكاء الاصطناعي.`,`التحيز الخوارزمي ناتج عن سرعة معالجة الذكاء الاصطناعي.`,`يمكن أن يتسبب التحيز في بيانات التدريب في تحيز تمييزي في أحكام الذكاء الاصطناعي.`,`حتى لو كانت عملية اتخاذ القرار في الذكاء الاصطناعي غير شفافة، فلا توجد مشكلة للمستخدمين.`]]
+};
+EF.forEach(q=>{const t=EFAR[q.id];let o=t[1];if(!o)o=q.t==='tf'?TF.ar:(q.en.o===PE?PA:null);q.ar={q:t[0],o:o};if(q.t==='txt')q.a.ar=t[2]});
+const $=s=>document.querySelector(s);
+const app=$('#app'), modal=$('#modal');
+const AL=['أ','ب','ج','د','هـ'], EL=['A','B','C','D','E'];
+let NAME='';
+const WA_NUM='201099920517';
+
+/* logo */
+$('#logo').innerHTML=`<svg width="54" height="54" viewBox="0 0 54 54"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1e88e5"/><stop offset="1" stop-color="#8e24aa"/></linearGradient></defs><rect width="54" height="54" rx="15" fill="url(#lg)"/><path d="M27 10 6 21l21 11 17-9v13h3V21z" fill="#fff"/><path d="M14 30v8c0 4 6 8 13 8s13-4 13-8v-8l-13 7z" fill="#ffd54f"/></svg><div>MOHTARF<small>منصة محترف</small></div>`;
+
+/* floating background emojis */
+['🤖','⚖️','🔒','💡','🧠','👁️','✅','💻','🔍','📊'].forEach((e,i)=>{const s=document.createElement('div');s.className='fl';s.textContent=e;s.style.left=(5+i*9.5)+'%';s.style.animationDuration=(14+i*2.2)+'s';s.style.animationDelay=(-i*2.5)+'s';document.body.appendChild(s)});
+
+/* sound + visual effects */
+let ac;
+function beep(f,t,d,type,v){const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+d)}
+function sfx(ok){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();const n=ac.currentTime;if(ok){[523,659,784,1047,1319].forEach((f,k)=>beep(f,n+k*.09,.22,'triangle',.25))}else{beep(220,n,.3,'sawtooth',.2);beep(150,n+.25,.45,'sawtooth',.2)}}catch(e){}}
+function burst(ok){const set=ok?['🎉','⭐','✨','🎊','😀','👏','🌟']:['😢','❌','💔','😞'];for(let i=0;i<(ok?26:10);i++){const s=document.createElement('div');s.className='em';s.textContent=set[i%set.length];s.style.left=(10+Math.random()*80)+'vw';s.style.top=(ok?50+Math.random()*30:40+Math.random()*30)+'vh';s.style.setProperty('--dy',(ok?-(200+Math.random()*250):120+Math.random()*120)+'px');s.style.setProperty('--dx',((Math.random()-.5)*300)+'px');document.body.appendChild(s);setTimeout(()=>s.remove(),1700)}}
+
+/* text normalization */
+function nz(s){return String(s).toLowerCase().replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/[()\[\].,،:؛;!?؟"'«»\-–—_]/g,' ').replace(/(^|\s)ال/g,'$1').replace(/\s+/g,' ').trim()}
+
+/* home */
+function home(){
+ closeM();
+ app.innerHTML=`<div class="hero"><h2>🤖⚖️ Ethical Issues with AI<small style="display:block;font-size:26px;color:#6a1b9a">القضايا الأخلاقية المتعلقة بالذكاء الاصطناعي</small></h2><p>Choose what you want · اختر ما تريد</p></div>
+ <div class="grid">
+ <button class="tile t1" onclick="lesson()">📖 Study the Lesson<small>English explanation + Arabic translation · 5 questions per part</small><small>الشرح بالإنجليزي مع الترجمة العربية</small></button>
+ <button class="tile t5" onclick="startExam('ef')">📝 Exam — English Book<small>All ${EF.length} questions, with Arabic translation</small><small>كل أسئلة الملف الإنجليزي مع الترجمة</small></button>
+ <button class="tile t3" onclick="startExam('ar')">📝 Exam — Arabic Book<small>All ${AR.length} questions in English, with Arabic translation</small><small>كل أسئلة الملف العربي بالإنجليزية مع الترجمة</small></button>
+ <button class="tile t6" onclick="openQ()">💭 Thinking Questions<small>Essay questions with model answers</small><small>أسئلة التفكير والمقال</small></button>
+ </div>`;
+ window.scrollTo(0,0);
+}
+
+/* paragraph-by-paragraph lesson */
+function lesson(){
+ let h=`<button class="back" onclick="home()">⬅ Home · الرئيسية</button>`;
+ LESSON.forEach((p,i)=>{
+  h+=`<section class="card" dir="ltr"><div class="ph c${i%5}">${p.t[0]}<small>${p.t[1]}</small></div>${p.b.map(r1).join('')}`;
+  if(p.q) h+=`<div class="qbtns"><button class="bigbtn b" onclick="partQ('ef',${p.q})">✍️ 5 Questions — English book<small style="display:block;font-size:16px">٥ أسئلة من الملف الإنجليزي</small></button><button class="bigbtn g" onclick="partQ('ar',${p.q})">✍️ 5 Questions — Arabic book<small style="display:block;font-size:16px">٥ أسئلة من الملف العربي</small></button></div>`;
+  h+=`</section>`;
+ });
+ h+=`<div class="qbtns"><button class="bigbtn o" onclick="startExam('ef')">📝 Exam — English Book</button><button class="bigbtn o" onclick="startExam('ar')">📝 Exam — Arabic Book</button><button class="bigbtn b" onclick="openQ()">💭 Thinking Questions</button></div>`;
+ app.innerHTML=h; window.scrollTo(0,0);
+}
+function pick(bank,ids){return ids.map(id=>bank.find(x=>x.id===id))}
+function partQ(src,n){
+ runQuiz({list:pick(src==='ef'?EF:AR,src==='ef'?PARTS.en[n]:PARTS.ar[n]),title:`Part ${n} — 5 Questions · الجزء ${n}`,exam:false});
+}
+
+/* exams with name entry */
+function startExam(src){
+ const T=src==='ef'?'Lesson 4 Exam — English Book · اختبار الملف الإنجليزي':'Lesson 4 Exam — Arabic Book · اختبار الملف العربي';
+ modal.classList.remove('hidden');document.body.style.overflow='hidden';
+ modal.innerHTML=`<div class="mbox" dir="ltr"><button class="x" onclick="closeM()">✖</button><div class="mt">${T}</div>
+ <div class="res"><div class="big">📝</div><p>Enter your name first, then start the exam<span class="tr" dir="rtl">اكتب اسمك أولًا ثم ابدأ الاختبار</span></p>
+ <input id="nm" class="namein" value="${NAME}" placeholder="Your name · اسمك">
+ <button class="bigbtn g" id="go">🚀 Start the exam · ابدأ الاختبار</button></div></div>`;
+ $('#go').onclick=()=>{const v=$('#nm').value.trim();if(!v){$('#nm').style.borderColor='#c62828';$('#nm').focus();return}NAME=v;runQuiz({list:src==='ef'?EF:AR,title:T,exam:true})};
+}
+function closeM(){modal.classList.add('hidden');modal.innerHTML='';document.body.style.overflow=''}
+
+/* quiz engine (English + Arabic translation) */
+function ansHTML(it){
+ const en=it.en,ar=it.ar;let e,a;
+ if(it.t==='txt'){e=it.a.en[0];a=it.a.ar[0]}
+ else if(it.t==='multi'){e=it.a.map(i=>EL[i]+') '+en.o[i]).join(' / ');a=it.a.map(i=>AL[i]+') '+ar.o[i]).join(' / ')}
+ else{e=EL[it.a]+') '+en.o[it.a];a=AL[it.a]+') '+ar.o[it.a]}
+ return `${e}<span class="tr" dir="rtl">${a}</span>`;
+}
+function runQuiz(o){
+ const {list,title,exam}=o;
+ let i=0,score=0;
+ modal.classList.remove('hidden');document.body.style.overflow='hidden';modal.scrollTop=0;
+ function show(){
+  if(i>=list.length)return end();
+  const it=list[i],en=it.en,ar=it.ar;let locked=false,sel=new Set();
+  let body='';
+  if(it.t==='txt')body=`<input id="ti" class="txt" dir="auto" autocomplete="off" placeholder="Type your answer (English or Arabic) · اكتب إجابتك"><div class="qbtns"><button class="bigbtn g" id="ck">✔ Check answer · تأكيد</button></div>`;
+  else{
+   body=en.o.map((t,k)=>`<button class="opt" data-k="${k}"><span class="ot">${it.t==='tf'?'':`<b>${EL[k]}</b>`}${t}</span><span class="tr" dir="rtl" style="${it.t==='tf'?'margin-inline-start:0':''}">${ar.o[k]}</span></button>`).join('');
+   if(it.t==='multi')body+=`<div class="qbtns"><button class="bigbtn g" id="ck">✔ Check answer · تأكيد الإجابة</button></div>`;
+  }
+  modal.innerHTML=`<div class="mbox" dir="ltr" id="mb"><button class="x" onclick="closeM()">✖</button>
+  <div class="mt">${title}</div>${exam?`<div style="font-size:19px">👤 ${NAME}</div>`:''}
+  <div class="meta"><span>Question ${i+1} / ${list.length} · سؤال</span><span>⭐ ${score}</span></div>
+  <div class="pbar"><i style="width:${(i/list.length)*100}%"></i></div>
+  <div class="qq">${en.q}<span class="tr" dir="rtl">${ar.q}</span></div>${body}<div class="fb" id="fb"></div>
+  <div class="qbtns"><button class="bigbtn b" id="nx" style="display:none">${i+1<list.length?'Next ➡ التالي':'🏁 Result · النتيجة'}</button></div></div>`;
+  const fb=$('#fb'),mb=$('#mb'),nx=$('#nx');
+  function done(ok){
+   locked=true;if(ok)score++;sfx(ok);burst(ok);
+   mb.classList.add(ok?'pulse':'shake');
+   fb.className='fb '+(ok?'ok':'no');
+   fb.innerHTML=ok?`🎉😀 Excellent! Correct answer<span class="tr" dir="rtl" style="color:#1b5e20">ممتاز! إجابة صحيحة</span>`:`😢 Wrong answer — the correct answer is:<br>${ansHTML(it)}<span class="tr" dir="rtl" style="color:#b71c1c">إجابة خاطئة — الإجابة الصحيحة موضحة أعلاه</span>`;
+   if(it.t==='txt')$('#ti').disabled=true;
+   const c=$('#ck');if(c)c.style.display='none';
+   nx.style.display='inline-block';nx.focus();
+  }
+  if(it.t==='txt'){
+   const accs=[...it.a.en,...it.a.ar];
+   const chk=()=>{if(locked)return;const v=nz($('#ti').value);if(!v)return;done(accs.some(a=>{const n=nz(a);return v===n||(n.length>=3&&v.includes(n))}))};
+   $('#ck').onclick=chk;$('#ti').onkeydown=e=>{if(e.key==='Enter')chk()};$('#ti').focus();
+  }else if(it.t==='multi'){
+   document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{if(locked)return;const k=+b.dataset.k;sel.has(k)?sel.delete(k):sel.add(k);b.classList.toggle('sel')});
+   $('#ck').onclick=()=>{if(locked||!sel.size)return;const ok=sel.size===it.a.length&&it.a.every(k=>sel.has(k));
+    document.querySelectorAll('.opt').forEach(b=>{const k=+b.dataset.k;b.disabled=true;b.classList.remove('sel');if(it.a.includes(k))b.classList.add('right');else if(sel.has(k))b.classList.add('bad')});done(ok)};
+  }else{
+   document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{if(locked)return;const k=+b.dataset.k;const ok=k===it.a;
+    document.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(+x.dataset.k===it.a)x.classList.add('right')});
+    if(!ok)b.classList.add('bad');done(ok)});
+  }
+  nx.onclick=()=>{i++;show()};
+ }
+ function end(){
+  const n=list.length,pct=Math.round(score/n*100);
+  const em=pct>=90?'🏆':pct>=75?'🎉':pct>=50?'🙂':'😢';
+  const msg=pct>=90?['Outstanding! You are a pro!','ممتاز! أنت محترف!']:pct>=75?['Great job!','أحسنت! عمل رائع']:pct>=50?['Good — review the lesson and try again','جيد، راجع الدرس وحاول مرة أخرى']:['Keep going — review the lesson and try again','لا بأس، راجع الدرس وحاول مرة أخرى'];
+  sfx(pct>=50);burst(pct>=50);
+  const date=new Date().toLocaleString('en-GB');
+  modal.innerHTML=`<div class="mbox res" dir="ltr"><button class="x" onclick="closeM()">✖</button><div class="mt" style="margin:0">${title}</div>
+  <div class="big">${em}</div>${exam?`<p>👤 ${NAME}</p>`:''}<div class="sc">${score} / ${n} &nbsp;(${pct}%)</div><p>${msg[0]}<span class="tr" dir="rtl">${msg[1]}</span></p>
+  <div class="qbtns">${exam?`<button class="bigbtn g" id="wa">📲 Send result to WhatsApp · إرسال النتيجة</button>`:''}
+  <button class="bigbtn b" id="rt">🔁 Try again · إعادة</button><button class="bigbtn o" onclick="closeM()">Close · إغلاق</button></div></div>`;
+  $('#rt').onclick=()=>{i=0;score=0;show()};
+  if(exam)$('#wa').onclick=()=>{
+   const t=`*منصة محترف | Mohtarf*\n📘 ${title}\n👤 Student / الطالب: ${NAME}\n⭐ Score / النتيجة: ${score} / ${n} (${pct}%)\n📅 ${date}`;
+   window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(t),'_blank');
+  };
+ }
+ show();
+}
+
+/* open / thinking questions */
+function openQ(){
+ let h=`<button class="back" onclick="home()">⬅ الرئيسية · Home</button><div class="hero"><h2>💭 أسئلة التفكير والمقال</h2><p>Thinking &amp; essay questions — اكتب إجابتك ثم اضغط لعرض الإجابة النموذجية</p></div>`;
+ OPEN.forEach((o,i)=>{
+  h+=`<section class="card"><div class="ph c${i%5}">${i+1}</div><div class="lang2" style="margin:0 24px"><div dir="rtl"><p style="margin:0">${o.ar.q}</p></div><div dir="ltr"><p style="margin:0">${o.en.q}</p></div></div>
+  <div style="margin:10px 24px"><textarea class="ota" placeholder="اكتب إجابتك · Write your answer"></textarea>
+  <div class="qbtns"><button class="bigbtn g" onclick="this.parentNode.nextElementSibling.classList.toggle('hidden')">👁 الإجابة النموذجية · Model answer</button></div>
+  <div class="box key hidden" style="margin-top:12px"><div class="lang2"><div dir="rtl">${o.ar.a}</div><div dir="ltr">${o.en.a}</div></div></div></div></section>`;
+ });
+ app.innerHTML=h;window.scrollTo(0,0);
+}
+home();
+</script>
+</body>
+</html>
